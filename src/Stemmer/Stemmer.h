@@ -12,7 +12,7 @@ namespace tcc
 */
 namespace tcc
 {
-	//перечисление "специальной" етеинформации о слове 
+	//перечисление "специальной" метаинформации о слове 
 	enum word_info{ LOWERCASE, UPPERCASE, QUOTES};
 	//структура, описывающая слово (требует доработки)
 	typedef struct word {
@@ -20,14 +20,17 @@ namespace tcc
 		word_info info;
 	}word_t;
 
+	/**
+	@brief Интерфейс для классов, предназначенных для нахождения основы слова (стемминга)
+	*/
 	class Stemmer {
 		/**
 		@brief Виртуальная функция для стемминга
-		@return Вектор векторов со словами, приведенными к начальной форме
+		@param msg Структура данных, содержащая в себе текст, подлежащий стеммингу
+		@return Структура данных, содержащая в себе слова, приведенные к начальной форме
 		*/
 
 		virtual std::vector<std::vector<tcc::word_t>> stem(std::vector<json> text) = 0;
-		//virtual void trim(std::string& word);
 	};
 
 	class PorterStemming: public Stemmer {
