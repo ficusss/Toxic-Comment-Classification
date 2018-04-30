@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['guimainwindow',['GUIMainWindow',['../class_g_u_i_main_window.html',1,'']]]
+  ['naivebayesclassifyer',['NaiveBayesClassifyer',['../classtcc_1_1_naive_bayes_classifyer.html',1,'tcc']]]
 ];

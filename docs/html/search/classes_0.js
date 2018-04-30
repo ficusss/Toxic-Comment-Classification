@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['adl_5fserializer',['adl_serializer',['../structnlohmann_1_1adl__serializer.html',1,'nlohmann']]]
+  ['bow',['BOW',['../classtcc_1_1_b_o_w.html',1,'tcc']]],
+  ['bowfeatures',['BOWFeatures',['../classtcc_1_1_b_o_w_features.html',1,'tcc']]]
 ];

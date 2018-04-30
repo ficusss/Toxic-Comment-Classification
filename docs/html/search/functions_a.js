@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['little_5fendianess',['little_endianess',['../classnlohmann_1_1detail_1_1binary__reader.html#a1d8f70f95d241354f86a0b9ae711c1c3',1,'nlohmann::detail::binary_reader']]]
+  ['operator_3c_3c',['operator&lt;&lt;',['../classtcc_1_1_stream_data_writer.html#a74d9a0e4c439c26629225e5454184d8f',1,'tcc::StreamDataWriter::operator&lt;&lt;(std::vector&lt; T &gt; &amp;vec_el)'],['../classtcc_1_1_stream_data_writer.html#a89ddb0f6d7df65db9d93af63c7de4ea1',1,'tcc::StreamDataWriter::operator&lt;&lt;(T &amp;el)']]]
 ];

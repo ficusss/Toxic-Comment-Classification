@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['discarded',['discarded',['../namespacenlohmann_1_1detail.html#a1ed8fc6239da25abcaf681d30ace4985a94708897ec9db8647dfe695714c98e46',1,'nlohmann::detail']]]
+  ['opening_5ffail',['OPENING_FAIL',['../classtcc_1_1_stream_data_writer.html#a014e8165660b60c024aee93941f283e1ab93abf8c0674741cc71f768f1433b15c',1,'tcc::StreamDataWriter']]]
 ];

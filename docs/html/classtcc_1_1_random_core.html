@@ -9,6 +9,14 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -45,6 +53,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('classtcc_1_1_random_core.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -59,11 +84,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="namespacetcc.html">tcc</a></li><li class="navelem"><a class="el" href="classtcc_1_1_random_core.html">RandomCore</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
@@ -73,7 +93,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Класс - ядро для классификации "недоброжелательности" текста  
+<p>РљР»Р°СЃСЃ - СЏРґСЂРѕ РґР»СЏ РєР»Р°СЃСЃРёС„РёРєР°С†РёРё "РЅРµРґРѕР±СЂРѕР¶РµР»Р°С‚РµР»СЊРЅРѕСЃС‚Рё" С‚РµРєСЃС‚Р°  
  <a href="classtcc_1_1_random_core.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_core_8h_source.html">Core.h</a>&gt;</code></p>
@@ -83,31 +103,28 @@ Inheritance diagram for tcc::RandomCore:</div>
  <div class="center">
   <img src="classtcc_1_1_random_core.png" usemap="#tcc::RandomCore_map" alt=""/>
   <map id="tcc::RandomCore_map" name="tcc::RandomCore_map">
-<area href="classtcc_1_1_core.html" title="Интерфейс классов ядра для классификации &quot;недоброжелательности&quot; текста " alt="tcc::Core" shape="rect" coords="0,0,108,24"/>
+<area href="classtcc_1_1_core.html" title="РРЅС‚РµСЂС„РµР№СЃ РєР»Р°СЃСЃРѕРІ СЏРґСЂР° РґР»СЏ РєР»Р°СЃСЃРёС„РёРєР°С†РёРё &quot;РЅРµРґРѕР±СЂРѕР¶РµР»Р°С‚РµР»СЊРЅРѕСЃС‚Рё&quot; С‚РµРєСЃС‚Р° " alt="tcc::Core" shape="rect" coords="0,0,108,24"/>
 </map>
  </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:afe97cdc0975220aa7a3b6c0e9b7686ae"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtcc_1_1_random_core.html#afe97cdc0975220aa7a3b6c0e9b7686ae">RandomCore</a> ()</td></tr>
-<tr class="memdesc:afe97cdc0975220aa7a3b6c0e9b7686ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Конструктор класса  <a href="#afe97cdc0975220aa7a3b6c0e9b7686ae">More...</a><br /></td></tr>
-<tr class="separator:afe97cdc0975220aa7a3b6c0e9b7686ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae18eafe972696d02b7d874b19ddbf07c"><td class="memItemLeft" align="right" valign="top"><a id="ae18eafe972696d02b7d874b19ddbf07c"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>RandomCore</b> (std::vector&lt; std::shared_ptr&lt; <a class="el" href="classtcc_1_1_classifyer.html">Classifyer</a> &gt;&gt; model)</td></tr>
+<tr class="memitem:ae18eafe972696d02b7d874b19ddbf07c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtcc_1_1_random_core.html#ae18eafe972696d02b7d874b19ddbf07c">RandomCore</a> (std::vector&lt; std::shared_ptr&lt; <a class="el" href="classtcc_1_1_classifyer.html">Classifyer</a> &gt;&gt; model)</td></tr>
+<tr class="memdesc:ae18eafe972696d02b7d874b19ddbf07c"><td class="mdescLeft">&#160;</td><td class="mdescRight">РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР°  <a href="#ae18eafe972696d02b7d874b19ddbf07c">More...</a><br /></td></tr>
 <tr class="separator:ae18eafe972696d02b7d874b19ddbf07c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4cf0cc9fc8508c2acb97cd6e096b1863"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtcc_1_1_random_core.html#a4cf0cc9fc8508c2acb97cd6e096b1863">run</a> (textVec &amp;t) const override</td></tr>
-<tr class="memdesc:a4cf0cc9fc8508c2acb97cd6e096b1863"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция классификации "недоброжелательности" текста  <a href="#a4cf0cc9fc8508c2acb97cd6e096b1863">More...</a><br /></td></tr>
-<tr class="separator:a4cf0cc9fc8508c2acb97cd6e096b1863"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2523bf3c63a426d728d87f3e8ae2e03"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtcc_1_1_random_core.html#ad2523bf3c63a426d728d87f3e8ae2e03">run</a> (<a class="el" href="namespacetcc.html#a9bdf9e81347b7904a6a7f8427d6465dc">textVec</a> &amp;t) const override</td></tr>
+<tr class="memdesc:ad2523bf3c63a426d728d87f3e8ae2e03"><td class="mdescLeft">&#160;</td><td class="mdescRight">Р¤СѓРЅРєС†РёСЏ РєР»Р°СЃСЃРёС„РёРєР°С†РёРё "РЅРµРґРѕР±СЂРѕР¶РµР»Р°С‚РµР»СЊРЅРѕСЃС‚Рё" С‚РµРєСЃС‚Р°  <a href="#ad2523bf3c63a426d728d87f3e8ae2e03">More...</a><br /></td></tr>
+<tr class="separator:ad2523bf3c63a426d728d87f3e8ae2e03"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a38c1691332494325f0b037f0ffb79934"><td class="memItemLeft" align="right" valign="top"><a id="a38c1691332494325f0b037f0ffb79934"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtcc_1_1_random_core.html#a38c1691332494325f0b037f0ffb79934">trainLoop</a> () override</td></tr>
-<tr class="memdesc:a38c1691332494325f0b037f0ffb79934"><td class="mdescLeft">&#160;</td><td class="mdescRight">Запуск обучения <br /></td></tr>
+<tr class="memdesc:a38c1691332494325f0b037f0ffb79934"><td class="mdescLeft">&#160;</td><td class="mdescRight">Р—Р°РїСѓСЃРє РѕР±СѓС‡РµРЅРёСЏ <br /></td></tr>
 <tr class="separator:a38c1691332494325f0b037f0ffb79934"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Класс - ядро для классификации "недоброжелательности" текста </p>
+<div class="textblock"><p>РљР»Р°СЃСЃ - СЏРґСЂРѕ РґР»СЏ РєР»Р°СЃСЃРёС„РёРєР°С†РёРё "РЅРµРґРѕР±СЂРѕР¶РµР»Р°С‚РµР»СЊРЅРѕСЃС‚Рё" С‚РµРєСЃС‚Р° </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="afe97cdc0975220aa7a3b6c0e9b7686ae"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afe97cdc0975220aa7a3b6c0e9b7686ae">&#9670;&nbsp;</a></span>RandomCore()</h2>
+<a id="ae18eafe972696d02b7d874b19ddbf07c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae18eafe972696d02b7d874b19ddbf07c">&#9670;&nbsp;</a></span>RandomCore()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -118,7 +135,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
         <tr>
           <td class="memname">tcc::RandomCore::RandomCore </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">std::vector&lt; std::shared_ptr&lt; <a class="el" href="classtcc_1_1_classifyer.html">Classifyer</a> &gt;&gt;&#160;</td>
+          <td class="paramname"><em>model</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -129,10 +147,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </table>
 </div><div class="memdoc">
 
-<p>Конструктор класса </p>
+<p>РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР° </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">model</td><td>вектор классификаторов, задающих используемую модель </td></tr>
+    <tr><td class="paramname">model</td><td>РІРµРєС‚РѕСЂ РєР»Р°СЃСЃРёС„РёРєР°С‚РѕСЂРѕРІ, Р·Р°РґР°СЋС‰РёС… РёСЃРїРѕР»СЊР·СѓРµРјСѓСЋ РјРѕРґРµР»СЊ </td></tr>
   </table>
   </dd>
 </dl>
@@ -140,8 +158,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a4cf0cc9fc8508c2acb97cd6e096b1863"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4cf0cc9fc8508c2acb97cd6e096b1863">&#9670;&nbsp;</a></span>run()</h2>
+<a id="ad2523bf3c63a426d728d87f3e8ae2e03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2523bf3c63a426d728d87f3e8ae2e03">&#9670;&nbsp;</a></span>run()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -150,9 +168,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; double &gt; tcc::RandomCore::run </td>
+          <td class="memname">std::vector&lt;double&gt; tcc::RandomCore::run </td>
           <td>(</td>
-          <td class="paramtype">textVec &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="namespacetcc.html#a9bdf9e81347b7904a6a7f8427d6465dc">textVec</a> &amp;&#160;</td>
           <td class="paramname"><em>t</em></td><td>)</td>
           <td> const</td>
         </tr>
@@ -164,10 +182,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </table>
 </div><div class="memdoc">
 
-<p>Функция классификации "недоброжелательности" текста </p>
+<p>Р¤СѓРЅРєС†РёСЏ РєР»Р°СЃСЃРёС„РёРєР°С†РёРё "РЅРµРґРѕР±СЂРѕР¶РµР»Р°С‚РµР»СЊРЅРѕСЃС‚Рё" С‚РµРєСЃС‚Р° </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">t</td><td>текст для анализа </td></tr>
+    <tr><td class="paramname">t</td><td>С‚РµРєСЃС‚ РґР»СЏ Р°РЅР°Р»РёР·Р° </td></tr>
   </table>
   </dd>
 </dl>
@@ -176,16 +194,19 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following files:<ul>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li>src/Cores/<a class="el" href="_core_8h_source.html">Core.h</a></li>
-<li>src/Cores/RandomCore.cpp</li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.14
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacetcc.html">tcc</a></li><li class="navelem"><a class="el" href="classtcc_1_1_random_core.html">RandomCore</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.14 </li>
+  </ul>
+</div>
 </body>
 </html>
