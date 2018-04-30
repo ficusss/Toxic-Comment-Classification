@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['randomcore',['RandomCore',['../classtcc_1_1_random_core.html',1,'tcc']]]
+  ['porterstemming',['PorterStemming',['../classtcc_1_1_porter_stemming.html',1,'tcc']]]
 ];

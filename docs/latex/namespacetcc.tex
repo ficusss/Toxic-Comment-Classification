@@ -1,0 +1,99 @@
+\hypertarget{namespacetcc}{}\section{tcc Namespace Reference}
+\label{namespacetcc}\index{tcc@{tcc}}
+
+
+Пространство имен tcc.  
+
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classtcc_1_1_b_o_w}{B\+OW}
+\begin{DoxyCompactList}\small\item\em Класс для хранения информации о корпусе слов в виде мешка слов \end{DoxyCompactList}\item 
+class \hyperlink{classtcc_1_1_b_o_w_features}{B\+O\+W\+Features}
+\begin{DoxyCompactList}\small\item\em Преобразование на основе bag-\/of-\/words. \end{DoxyCompactList}\item 
+class \hyperlink{classtcc_1_1_classifyer}{Classifyer}
+\begin{DoxyCompactList}\small\item\em Интерфейс классификатора текста \end{DoxyCompactList}\item 
+class \hyperlink{classtcc_1_1_controller}{Controller}
+\begin{DoxyCompactList}\small\item\em Основной класс контроллер управляющий ходом программы \end{DoxyCompactList}\item 
+class \hyperlink{classtcc_1_1_core}{Core}
+\begin{DoxyCompactList}\small\item\em Интерфейс классов ядра для классификации \char`\"{}недоброжелательности\char`\"{} текста \end{DoxyCompactList}\item 
+class \hyperlink{classtcc_1_1_data_preprocessing}{Data\+Preprocessing}
+\begin{DoxyCompactList}\small\item\em Интерфейс для классов предобработки текста \end{DoxyCompactList}\item 
+class \hyperlink{classtcc_1_1_data_provider}{Data\+Provider}
+\begin{DoxyCompactList}\small\item\em Интерфейс для классов считывания/записи данных \end{DoxyCompactList}\item 
+class \hyperlink{classtcc_1_1_features}{Features}
+\begin{DoxyCompactList}\small\item\em Интерфейс класса, преобразующего текст в вектор \end{DoxyCompactList}\item 
+class \hyperlink{classtcc_1_1_kaggle_data_provider}{Kaggle\+Data\+Provider}
+\begin{DoxyCompactList}\small\item\em Класс для считывания тренировочных образцов с сайта Kaggle. \end{DoxyCompactList}\item 
+class \hyperlink{classtcc_1_1_naive_bayes_classifyer}{Naive\+Bayes\+Classifyer}
+\begin{DoxyCompactList}\small\item\em Наивный байесовский классификатор \end{DoxyCompactList}\item 
+class \hyperlink{classtcc_1_1_porter_stemming}{Porter\+Stemming}
+\begin{DoxyCompactList}\small\item\em Стеммер Портера \end{DoxyCompactList}\item 
+class \hyperlink{classtcc_1_1_random_core}{Random\+Core}
+\begin{DoxyCompactList}\small\item\em Класс -\/ ядро для классификации \char`\"{}недоброжелательности\char`\"{} текста \end{DoxyCompactList}\item 
+class \hyperlink{classtcc_1_1_stemmer}{Stemmer}
+\begin{DoxyCompactList}\small\item\em Интерфейс для классов, предназначенных для нахождения основы слова (стемминга) \end{DoxyCompactList}\item 
+class \hyperlink{classtcc_1_1_stream_data_writer}{Stream\+Data\+Writer}
+\begin{DoxyCompactList}\small\item\em Класс, записывающий данные в поток \end{DoxyCompactList}\item 
+struct \hyperlink{structtcc_1_1word}{word}
+\begin{DoxyCompactList}\small\item\em Cтруктура, описывающая слово \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \hyperlink{namespacetcc_a9bdf9e81347b7904a6a7f8427d6465dc}{text\+Vec} = std\+::vector$<$ const std\+::string $>$\hypertarget{namespacetcc_a9bdf9e81347b7904a6a7f8427d6465dc}{}\label{namespacetcc_a9bdf9e81347b7904a6a7f8427d6465dc}
+
+\begin{DoxyCompactList}\small\item\em Вектор текстов \end{DoxyCompactList}\item 
+using \hyperlink{namespacetcc_a9822983deb4f2a8719352b3c1c55d69a}{labeled\+Text} = std\+::vector$<$ std\+::pair$<$ \hyperlink{namespacetcc_a9bdf9e81347b7904a6a7f8427d6465dc}{text\+Vec}, bool $>$$>$\hypertarget{namespacetcc_a9822983deb4f2a8719352b3c1c55d69a}{}\label{namespacetcc_a9822983deb4f2a8719352b3c1c55d69a}
+
+\begin{DoxyCompactList}\small\item\em Вектор текстов с тегами \end{DoxyCompactList}\item 
+using \hyperlink{group__aliases_gae00908f082db728f73e52c3b4932261a}{uint} = unsigned int
+\begin{DoxyCompactList}\small\item\em Положительное целое \end{DoxyCompactList}\item 
+using \hyperlink{group__aliases_ga33d75c4fd4f8d49a28f246c2e0a0f3a5}{vec} = std\+::vector$<$ \hyperlink{group__aliases_gae00908f082db728f73e52c3b4932261a}{uint} $>$
+\begin{DoxyCompactList}\small\item\em Вектор положительных целых \end{DoxyCompactList}\item 
+using \hyperlink{group__aliases_ga085c5ca5bf5645ff17c0ede30f56b08f}{text} = std\+::vector$<$ std\+::string $>$
+\begin{DoxyCompactList}\small\item\em Массив текстов \end{DoxyCompactList}\item 
+typedef struct \hyperlink{structtcc_1_1word}{tcc\+::word} \hyperlink{namespacetcc_a310a95f44f9f0b3198b9758732eba6b9}{word\+\_\+t}\hypertarget{namespacetcc_a310a95f44f9f0b3198b9758732eba6b9}{}\label{namespacetcc_a310a95f44f9f0b3198b9758732eba6b9}
+
+\begin{DoxyCompactList}\small\item\em Cтруктура, описывающая слово \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries word\+\_\+info} \{ {\bfseries L\+O\+W\+E\+R\+C\+A\+SE}, 
+{\bfseries U\+P\+P\+E\+R\+C\+A\+SE}, 
+{\bfseries Q\+U\+O\+T\+ES}
+ \}\hypertarget{namespacetcc_ac1df3f298036dbc0a3c447b8df4d76d3}{}\label{namespacetcc_ac1df3f298036dbc0a3c447b8df4d76d3}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+json \hyperlink{namespacetcc_a7a7519f44fc06a62fd07a1c41202eb47}{parse\+\_\+cmd} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Обработка аргументов командной строки \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Пространство имен tcc. 
+
+namespace tcc 
+
+\subsection{Function Documentation}
+\index{tcc@{tcc}!parse\+\_\+cmd@{parse\+\_\+cmd}}
+\index{parse\+\_\+cmd@{parse\+\_\+cmd}!tcc@{tcc}}
+\subsubsection[{\texorpdfstring{parse\+\_\+cmd(int argc, char $\ast$argv[])}{parse_cmd(int argc, char *argv[])}}]{\setlength{\rightskip}{0pt plus 5cm}json tcc\+::parse\+\_\+cmd (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacetcc_a7a7519f44fc06a62fd07a1c41202eb47}{}\label{namespacetcc_a7a7519f44fc06a62fd07a1c41202eb47}
+
+
+Обработка аргументов командной строки 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & количество аргументов \\
+\hline
+{\em argv} & указатель на массив с данными \\
+\hline
+\end{DoxyParams}

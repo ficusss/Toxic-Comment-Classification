@@ -1,0 +1,151 @@
+\hypertarget{classtcc_1_1_stream_data_writer}{}\section{tcc\+:\+:Stream\+Data\+Writer Class Reference}
+\label{classtcc_1_1_stream_data_writer}\index{tcc\+::\+Stream\+Data\+Writer@{tcc\+::\+Stream\+Data\+Writer}}
+
+
+Класс, записывающий данные в поток  
+
+
+
+
+{\ttfamily \#include $<$Stream\+Data\+Writer.\+h$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{classtcc_1_1_stream_data_writer_a014e8165660b60c024aee93941f283e1}{State} \{ \hyperlink{classtcc_1_1_stream_data_writer_a014e8165660b60c024aee93941f283e1a9afa26fd0d0b5478c4f9ae14fafd6f91}{G\+O\+OD}, 
+\hyperlink{classtcc_1_1_stream_data_writer_a014e8165660b60c024aee93941f283e1ab57cc7a522ed023eb3fdc2ed9c37fc51}{F\+O\+R\+M\+A\+T\+\_\+\+F\+A\+IL}, 
+\hyperlink{classtcc_1_1_stream_data_writer_a014e8165660b60c024aee93941f283e1aba75a6bc4011e9f5f35a79397dc25757}{W\+R\+I\+T\+I\+N\+G\+\_\+\+F\+A\+IL}, 
+\hyperlink{classtcc_1_1_stream_data_writer_a014e8165660b60c024aee93941f283e1ab93abf8c0674741cc71f768f1433b15c}{O\+P\+E\+N\+I\+N\+G\+\_\+\+F\+A\+IL}
+ \}\begin{DoxyCompactList}\small\item\em Перечисление, хранящее информацию о текущем состоянии потока \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classtcc_1_1_stream_data_writer_a9f01eb2c6ee3e38a19c805b23b77bb15}{Stream\+Data\+Writer} (std\+::string \&file\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Конструктор экземпляра класса \end{DoxyCompactList}\item 
+\hyperlink{classtcc_1_1_stream_data_writer_ad59e6b2d6e70d0e33b156e4725ef7840}{Stream\+Data\+Writer} (const char $\ast$file\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Конструктор экземпляра класса \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\\hyperlink{classtcc_1_1_stream_data_writer_a014e8165660b60c024aee93941f283e1}{State} \hyperlink{classtcc_1_1_stream_data_writer_a74d9a0e4c439c26629225e5454184d8f}{operator$<$$<$} (std\+::vector$<$ T $>$ \&vec\+\_\+el)
+\begin{DoxyCompactList}\small\item\em Запись в поток вектора элементов произвольного типа (один элемент -\/ одна строка) \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\\hyperlink{classtcc_1_1_stream_data_writer_a014e8165660b60c024aee93941f283e1}{State} \hyperlink{classtcc_1_1_stream_data_writer_a89ddb0f6d7df65db9d93af63c7de4ea1}{operator$<$$<$} (T \&el)
+\begin{DoxyCompactList}\small\item\em Запись в поток элемента произвольного типа \end{DoxyCompactList}\item 
+\hyperlink{classtcc_1_1_stream_data_writer_a014e8165660b60c024aee93941f283e1}{State} \hyperlink{classtcc_1_1_stream_data_writer_afb23b2dba09ad43c68f7e313853191e2}{close} ()\hypertarget{classtcc_1_1_stream_data_writer_afb23b2dba09ad43c68f7e313853191e2}{}\label{classtcc_1_1_stream_data_writer_afb23b2dba09ad43c68f7e313853191e2}
+
+\begin{DoxyCompactList}\small\item\em Закрытие потока \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Related Functions}
+(Note that these are not member functions.) \begin{DoxyCompactItemize}
+\item 
+\hyperlink{classtcc_1_1_stream_data_writer_a014e8165660b60c024aee93941f283e1}{State} \hyperlink{classtcc_1_1_stream_data_writer_a2ea7c803af9a02fa1c400b540be037ff}{state} ()\hypertarget{classtcc_1_1_stream_data_writer_a2ea7c803af9a02fa1c400b540be037ff}{}\label{classtcc_1_1_stream_data_writer_a2ea7c803af9a02fa1c400b540be037ff}
+
+\begin{DoxyCompactList}\small\item\em Информация о текущем состоянии потока \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Класс, записывающий данные в поток 
+
+\subsection{Member Enumeration Documentation}
+\index{tcc\+::\+Stream\+Data\+Writer@{tcc\+::\+Stream\+Data\+Writer}!State@{State}}
+\index{State@{State}!tcc\+::\+Stream\+Data\+Writer@{tcc\+::\+Stream\+Data\+Writer}}
+\subsubsection[{\texorpdfstring{State}{State}}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf tcc\+::\+Stream\+Data\+Writer\+::\+State}}\hypertarget{classtcc_1_1_stream_data_writer_a014e8165660b60c024aee93941f283e1}{}\label{classtcc_1_1_stream_data_writer_a014e8165660b60c024aee93941f283e1}
+
+
+Перечисление, хранящее информацию о текущем состоянии потока 
+
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{G\+O\+OD@{G\+O\+OD}!tcc\+::\+Stream\+Data\+Writer@{tcc\+::\+Stream\+Data\+Writer}}\index{tcc\+::\+Stream\+Data\+Writer@{tcc\+::\+Stream\+Data\+Writer}!G\+O\+OD@{G\+O\+OD}}\item[{\em 
+G\+O\+OD\hypertarget{classtcc_1_1_stream_data_writer_a014e8165660b60c024aee93941f283e1a9afa26fd0d0b5478c4f9ae14fafd6f91}{}\label{classtcc_1_1_stream_data_writer_a014e8165660b60c024aee93941f283e1a9afa26fd0d0b5478c4f9ae14fafd6f91}
+}]Ошибки не зарегистрированы \index{F\+O\+R\+M\+A\+T\+\_\+\+F\+A\+IL@{F\+O\+R\+M\+A\+T\+\_\+\+F\+A\+IL}!tcc\+::\+Stream\+Data\+Writer@{tcc\+::\+Stream\+Data\+Writer}}\index{tcc\+::\+Stream\+Data\+Writer@{tcc\+::\+Stream\+Data\+Writer}!F\+O\+R\+M\+A\+T\+\_\+\+F\+A\+IL@{F\+O\+R\+M\+A\+T\+\_\+\+F\+A\+IL}}\item[{\em 
+F\+O\+R\+M\+A\+T\+\_\+\+F\+A\+IL\hypertarget{classtcc_1_1_stream_data_writer_a014e8165660b60c024aee93941f283e1ab57cc7a522ed023eb3fdc2ed9c37fc51}{}\label{classtcc_1_1_stream_data_writer_a014e8165660b60c024aee93941f283e1ab57cc7a522ed023eb3fdc2ed9c37fc51}
+}]Не удалось преобразовать переменную для записи \index{W\+R\+I\+T\+I\+N\+G\+\_\+\+F\+A\+IL@{W\+R\+I\+T\+I\+N\+G\+\_\+\+F\+A\+IL}!tcc\+::\+Stream\+Data\+Writer@{tcc\+::\+Stream\+Data\+Writer}}\index{tcc\+::\+Stream\+Data\+Writer@{tcc\+::\+Stream\+Data\+Writer}!W\+R\+I\+T\+I\+N\+G\+\_\+\+F\+A\+IL@{W\+R\+I\+T\+I\+N\+G\+\_\+\+F\+A\+IL}}\item[{\em 
+W\+R\+I\+T\+I\+N\+G\+\_\+\+F\+A\+IL\hypertarget{classtcc_1_1_stream_data_writer_a014e8165660b60c024aee93941f283e1aba75a6bc4011e9f5f35a79397dc25757}{}\label{classtcc_1_1_stream_data_writer_a014e8165660b60c024aee93941f283e1aba75a6bc4011e9f5f35a79397dc25757}
+}]Не удалось записать в поток \index{O\+P\+E\+N\+I\+N\+G\+\_\+\+F\+A\+IL@{O\+P\+E\+N\+I\+N\+G\+\_\+\+F\+A\+IL}!tcc\+::\+Stream\+Data\+Writer@{tcc\+::\+Stream\+Data\+Writer}}\index{tcc\+::\+Stream\+Data\+Writer@{tcc\+::\+Stream\+Data\+Writer}!O\+P\+E\+N\+I\+N\+G\+\_\+\+F\+A\+IL@{O\+P\+E\+N\+I\+N\+G\+\_\+\+F\+A\+IL}}\item[{\em 
+O\+P\+E\+N\+I\+N\+G\+\_\+\+F\+A\+IL\hypertarget{classtcc_1_1_stream_data_writer_a014e8165660b60c024aee93941f283e1ab93abf8c0674741cc71f768f1433b15c}{}\label{classtcc_1_1_stream_data_writer_a014e8165660b60c024aee93941f283e1ab93abf8c0674741cc71f768f1433b15c}
+}]Не удалось открыть файл \end{description}
+\end{Desc}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{tcc\+::\+Stream\+Data\+Writer@{tcc\+::\+Stream\+Data\+Writer}!Stream\+Data\+Writer@{Stream\+Data\+Writer}}
+\index{Stream\+Data\+Writer@{Stream\+Data\+Writer}!tcc\+::\+Stream\+Data\+Writer@{tcc\+::\+Stream\+Data\+Writer}}
+\subsubsection[{\texorpdfstring{Stream\+Data\+Writer(std\+::string \&file\+\_\+name)}{StreamDataWriter(std::string &file_name)}}]{\setlength{\rightskip}{0pt plus 5cm}tcc\+::\+Stream\+Data\+Writer\+::\+Stream\+Data\+Writer (
+\begin{DoxyParamCaption}
+\item[{std\+::string \&}]{file\+\_\+name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classtcc_1_1_stream_data_writer_a9f01eb2c6ee3e38a19c805b23b77bb15}{}\label{classtcc_1_1_stream_data_writer_a9f01eb2c6ee3e38a19c805b23b77bb15}
+
+
+Конструктор экземпляра класса 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+\_\+name} & Имя файла для записи. При отсутсвии запись ведется в консоль \\
+\hline
+\end{DoxyParams}
+\index{tcc\+::\+Stream\+Data\+Writer@{tcc\+::\+Stream\+Data\+Writer}!Stream\+Data\+Writer@{Stream\+Data\+Writer}}
+\index{Stream\+Data\+Writer@{Stream\+Data\+Writer}!tcc\+::\+Stream\+Data\+Writer@{tcc\+::\+Stream\+Data\+Writer}}
+\subsubsection[{\texorpdfstring{Stream\+Data\+Writer(const char $\ast$file\+\_\+name)}{StreamDataWriter(const char *file_name)}}]{\setlength{\rightskip}{0pt plus 5cm}tcc\+::\+Stream\+Data\+Writer\+::\+Stream\+Data\+Writer (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{file\+\_\+name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classtcc_1_1_stream_data_writer_ad59e6b2d6e70d0e33b156e4725ef7840}{}\label{classtcc_1_1_stream_data_writer_ad59e6b2d6e70d0e33b156e4725ef7840}
+
+
+Конструктор экземпляра класса 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+\_\+name} & Имя файла для записи. При отсутсвии запись ведется в консоль \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{tcc\+::\+Stream\+Data\+Writer@{tcc\+::\+Stream\+Data\+Writer}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!tcc\+::\+Stream\+Data\+Writer@{tcc\+::\+Stream\+Data\+Writer}}
+\subsubsection[{\texorpdfstring{operator$<$$<$(std\+::vector$<$ T $>$ \&vec\+\_\+el)}{operator<<(std::vector< T > &vec_el)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ {\bf State} tcc\+::\+Stream\+Data\+Writer\+::operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{std\+::vector$<$ T $>$ \&}]{vec\+\_\+el}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classtcc_1_1_stream_data_writer_a74d9a0e4c439c26629225e5454184d8f}{}\label{classtcc_1_1_stream_data_writer_a74d9a0e4c439c26629225e5454184d8f}
+
+
+Запись в поток вектора элементов произвольного типа (один элемент -\/ одна строка) 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & тип записываемых элементов \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em vec\+\_\+el} & ссылка на запсываемый вектор \\
+\hline
+\end{DoxyParams}
+\index{tcc\+::\+Stream\+Data\+Writer@{tcc\+::\+Stream\+Data\+Writer}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!tcc\+::\+Stream\+Data\+Writer@{tcc\+::\+Stream\+Data\+Writer}}
+\subsubsection[{\texorpdfstring{operator$<$$<$(\+T \&el)}{operator<<(T &el)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ {\bf State} tcc\+::\+Stream\+Data\+Writer\+::operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{T \&}]{el}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classtcc_1_1_stream_data_writer_a89ddb0f6d7df65db9d93af63c7de4ea1}{}\label{classtcc_1_1_stream_data_writer_a89ddb0f6d7df65db9d93af63c7de4ea1}
+
+
+Запись в поток элемента произвольного типа 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & тип записываемого эелемента \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em el} & ссылка на запсиываемый элемент \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Data\+Consumers/Stream\+Data\+Writer.\+h\end{DoxyCompactItemize}

@@ -9,7 +9,7 @@
 //основная функция стеммера, приклеивает not к след слову и обрезает окончания
 //на вход - то, что отдал провайдер
 //на выходе - вектор векторов (матрица) где все слова приведены к начальной форме
-std::vector<std::vector<tcc::word_t>> tcc::PorterStemming::stem(std::vector<json> text) {
+std::vector<std::vector<tcc:word_t>> tcc::PorterStemming::stem(std::vector<json> text) {
 
 	std::vector<std::vector<tcc::word_t>> res(text.size(), std::vector<tcc::word_t>());
 	std::string buf_comment;

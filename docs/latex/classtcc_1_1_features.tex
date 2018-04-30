@@ -1,0 +1,116 @@
+\hypertarget{classtcc_1_1_features}{}\section{tcc\+:\+:Features Class Reference}
+\label{classtcc_1_1_features}\index{tcc\+::\+Features@{tcc\+::\+Features}}
+
+
+Интерфейс класса, преобразующего текст в вектор  
+
+
+
+
+{\ttfamily \#include $<$Vocab.\+h$>$}
+
+Inheritance diagram for tcc\+:\+:Features\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classtcc_1_1_features}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \hyperlink{group__aliases_gae00908f082db728f73e52c3b4932261a}{uint} \hyperlink{classtcc_1_1_features_a840094cf14bfb563d7820e39ae8c6d48}{extract\+\_\+feature} (std\+::string \&s, std\+::function$<$ double(double)$>$ f) const  =0
+\begin{DoxyCompactList}\small\item\em Оценка выраженности признака, задаваемого одним словом \end{DoxyCompactList}\item 
+virtual \hyperlink{group__aliases_gae00908f082db728f73e52c3b4932261a}{uint} \hyperlink{classtcc_1_1_features_ad70d9deac212689322d4d4e88cff26e3}{extract\+\_\+feature} (\hyperlink{group__aliases_ga085c5ca5bf5645ff17c0ede30f56b08f}{text} \&s, std\+::function$<$ double(double)$>$ f) const  =0
+\begin{DoxyCompactList}\small\item\em Оценка выраженности признака, задаваемого несколькими словами \end{DoxyCompactList}\item 
+virtual \hyperlink{group__aliases_gae00908f082db728f73e52c3b4932261a}{uint} \hyperlink{classtcc_1_1_features_ae87452022b079681e9904efd4ffbe201}{reduce\+\_\+dimensions} (\hyperlink{group__aliases_gae00908f082db728f73e52c3b4932261a}{uint} dim, \hyperlink{group__aliases_ga085c5ca5bf5645ff17c0ede30f56b08f}{text} \&s, std\+::function$<$ double(double)$>$ f) const  =0
+\begin{DoxyCompactList}\small\item\em Сжатие размерности \end{DoxyCompactList}\item 
+double \hyperlink{classtcc_1_1_features_af03f2694924c4522c70d41a4a6503ff0}{metric} (\hyperlink{classtcc_1_1_features}{Features} \&l, \hyperlink{classtcc_1_1_features}{Features} \&r)
+\begin{DoxyCompactList}\small\item\em Оценка расстояния между двумя текстами \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Интерфейс класса, преобразующего текст в вектор 
+
+\subsection{Member Function Documentation}
+\index{tcc\+::\+Features@{tcc\+::\+Features}!extract\+\_\+feature@{extract\+\_\+feature}}
+\index{extract\+\_\+feature@{extract\+\_\+feature}!tcc\+::\+Features@{tcc\+::\+Features}}
+\subsubsection[{\texorpdfstring{extract\+\_\+feature(std\+::string \&s, std\+::function$<$ double(double)$>$ f) const  =0}{extract_feature(std::string &s, std::function< double(double)> f) const  =0}}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf uint} tcc\+::\+Features\+::extract\+\_\+feature (
+\begin{DoxyParamCaption}
+\item[{std\+::string \&}]{s, }
+\item[{std\+::function$<$ double(double)$>$}]{f}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [pure virtual]}}\hypertarget{classtcc_1_1_features_a840094cf14bfb563d7820e39ae8c6d48}{}\label{classtcc_1_1_features_a840094cf14bfb563d7820e39ae8c6d48}
+
+
+Оценка выраженности признака, задаваемого одним словом 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & текст \\
+\hline
+{\em f} & функция, с помощью которой оценивается выраженность признака \\
+\hline
+\end{DoxyParams}
+\index{tcc\+::\+Features@{tcc\+::\+Features}!extract\+\_\+feature@{extract\+\_\+feature}}
+\index{extract\+\_\+feature@{extract\+\_\+feature}!tcc\+::\+Features@{tcc\+::\+Features}}
+\subsubsection[{\texorpdfstring{extract\+\_\+feature(text \&s, std\+::function$<$ double(double)$>$ f) const  =0}{extract_feature(text &s, std::function< double(double)> f) const  =0}}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf uint} tcc\+::\+Features\+::extract\+\_\+feature (
+\begin{DoxyParamCaption}
+\item[{{\bf text} \&}]{s, }
+\item[{std\+::function$<$ double(double)$>$}]{f}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [pure virtual]}}\hypertarget{classtcc_1_1_features_ad70d9deac212689322d4d4e88cff26e3}{}\label{classtcc_1_1_features_ad70d9deac212689322d4d4e88cff26e3}
+
+
+Оценка выраженности признака, задаваемого несколькими словами 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & текст \\
+\hline
+{\em f} & функция, с помощью которой оценивается выраженность признака \\
+\hline
+\end{DoxyParams}
+\index{tcc\+::\+Features@{tcc\+::\+Features}!metric@{metric}}
+\index{metric@{metric}!tcc\+::\+Features@{tcc\+::\+Features}}
+\subsubsection[{\texorpdfstring{metric(\+Features \&l, Features \&r)}{metric(Features &l, Features &r)}}]{\setlength{\rightskip}{0pt plus 5cm}double tcc\+::\+Features\+::metric (
+\begin{DoxyParamCaption}
+\item[{{\bf Features} \&}]{l, }
+\item[{{\bf Features} \&}]{r}
+\end{DoxyParamCaption}
+)}\hypertarget{classtcc_1_1_features_af03f2694924c4522c70d41a4a6503ff0}{}\label{classtcc_1_1_features_af03f2694924c4522c70d41a4a6503ff0}
+
+
+Оценка расстояния между двумя текстами 
+
+
+\begin{DoxyParams}{Parameters}
+{\em l,r} & тексты \\
+\hline
+\end{DoxyParams}
+\index{tcc\+::\+Features@{tcc\+::\+Features}!reduce\+\_\+dimensions@{reduce\+\_\+dimensions}}
+\index{reduce\+\_\+dimensions@{reduce\+\_\+dimensions}!tcc\+::\+Features@{tcc\+::\+Features}}
+\subsubsection[{\texorpdfstring{reduce\+\_\+dimensions(uint dim, text \&s, std\+::function$<$ double(double)$>$ f) const  =0}{reduce_dimensions(uint dim, text &s, std::function< double(double)> f) const  =0}}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf uint} tcc\+::\+Features\+::reduce\+\_\+dimensions (
+\begin{DoxyParamCaption}
+\item[{{\bf uint}}]{dim, }
+\item[{{\bf text} \&}]{s, }
+\item[{std\+::function$<$ double(double)$>$}]{f}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [pure virtual]}}\hypertarget{classtcc_1_1_features_ae87452022b079681e9904efd4ffbe201}{}\label{classtcc_1_1_features_ae87452022b079681e9904efd4ffbe201}
+
+
+Сжатие размерности 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dim} & желаемая размерность \\
+\hline
+{\em s} & текст \\
+\hline
+{\em f} & функция, с помощью которой производится сжатие \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Classification/Vocab.\+h\end{DoxyCompactItemize}

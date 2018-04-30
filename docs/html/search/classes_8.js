@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['streamdatawriter',['StreamDataWriter',['../classtcc_1_1_stream_data_writer.html',1,'tcc']]]
+  ['randomcore',['RandomCore',['../classtcc_1_1_random_core.html',1,'tcc']]]
 ];

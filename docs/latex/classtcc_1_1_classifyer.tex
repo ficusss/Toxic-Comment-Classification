@@ -1,0 +1,59 @@
+\hypertarget{classtcc_1_1_classifyer}{}\section{tcc\+:\+:Classifyer Class Reference}
+\label{classtcc_1_1_classifyer}\index{tcc\+::\+Classifyer@{tcc\+::\+Classifyer}}
+
+
+Интерфейс классификатора текста  
+
+
+
+
+{\ttfamily \#include $<$Classifyer.\+h$>$}
+
+Inheritance diagram for tcc\+:\+:Classifyer\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classtcc_1_1_classifyer}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classtcc_1_1_classifyer_a31a89d27c030b89964770d7ab5db7850}{train} ()=0\hypertarget{classtcc_1_1_classifyer_a31a89d27c030b89964770d7ab5db7850}{}\label{classtcc_1_1_classifyer_a31a89d27c030b89964770d7ab5db7850}
+
+\begin{DoxyCompactList}\small\item\em Запуск обучения классификатора \end{DoxyCompactList}\item 
+virtual double \hyperlink{classtcc_1_1_classifyer_a13db939fe0720f111df9266e1eef54c0}{run} (\hyperlink{namespacetcc_a9bdf9e81347b7904a6a7f8427d6465dc}{text\+Vec} \&\hyperlink{group__aliases_ga085c5ca5bf5645ff17c0ede30f56b08f}{text}) const  =0
+\begin{DoxyCompactList}\small\item\em Оценка текста \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Интерфейс классификатора текста 
+
+\subsection{Member Function Documentation}
+\index{tcc\+::\+Classifyer@{tcc\+::\+Classifyer}!run@{run}}
+\index{run@{run}!tcc\+::\+Classifyer@{tcc\+::\+Classifyer}}
+\subsubsection[{\texorpdfstring{run(text\+Vec \&text) const  =0}{run(textVec &text) const  =0}}]{\setlength{\rightskip}{0pt plus 5cm}virtual double tcc\+::\+Classifyer\+::run (
+\begin{DoxyParamCaption}
+\item[{{\bf text\+Vec} \&}]{text}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [pure virtual]}}\hypertarget{classtcc_1_1_classifyer_a13db939fe0720f111df9266e1eef54c0}{}\label{classtcc_1_1_classifyer_a13db939fe0720f111df9266e1eef54c0}
+
+
+Оценка текста 
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & -\/ текст, подлежащий оцениванию \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+вероятность принадлежности текста категории 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classtcc_1_1_naive_bayes_classifyer_aec3d7dfdb8be9b48adf8e6489d97115d}{tcc\+::\+Naive\+Bayes\+Classifyer}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Classification/Classifyer.\+h\end{DoxyCompactItemize}
