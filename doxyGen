@@ -832,8 +832,7 @@ RECURSIVE              = YES
 
 EXCLUDE                = .\src\Stemmer\Stemmer.h \
                          .\src\Classification\BSTNode.h \
-                         .\src\includes\json.hpp \
-                         .\src\GUI\mainwindow.h
+                         .\src\includes\json.hpp
 
 # The EXCLUDE_SYMLINKS tag can be used to select whether or not files or
 # directories that are symbolic links (a Unix file system feature) are excluded
