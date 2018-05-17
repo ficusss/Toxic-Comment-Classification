@@ -69,7 +69,7 @@
  * doxygen
  
 Проверка стиля и синтексиса итогового продукта:
- * Cpp Check Code Analysis Tools версии 1.82.
+ * Cpp Check Code Analysis Tools версии 1.83.
 
 
 ## Характеристики продукта
