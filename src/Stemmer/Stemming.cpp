@@ -8,12 +8,13 @@
 
 //основна€ функци€ стеммера, приклеивает not к след слову и обрезает окончани€
 //на вход - то, что отдал провайдер
-//на выходе - вектор векторов (матрица) где все слова приведены к начальной форме
-std::vector<std::vector<tcc:word_t>> tcc::PorterStemming::stem(std::vector<json> text) {
+//на выходе - вектор векторов (матрица), где строка матрицы - один комментарий, все слова приведены к начальной форме
+std::vector<std::vector<std::string>> tcc::PorterStemming::stem(std::vector<json> text) {
 
-	std::vector<std::vector<tcc::word_t>> res(text.size(), std::vector<tcc::word_t>());
+	std::vector<std::vector<std::string>> all_text(text.size(), std::vector<std::string>());
+	//std::vector<tcc::BOW> res(text.size());
 	std::string buf_comment;
-	tcc::word_t buf_word;
+	std::string buf_word;
 	std::string tag = "comment_text";
 	std::string neg = "not";
 	bool for_not = false;
@@ -24,29 +25,33 @@ std::vector<std::vector<tcc:word_t>> tcc::PorterStemming::stem(std::vector<json>
 		buf_comment = el[tag];
 
 		std::istringstream iss(buf_comment, std::istringstream::in);
-		while (iss >> buf_word.str) {
-			if (buf_word.str == "not") {
+		while (iss >> buf_word) {
+			if (buf_word == "not") {
 				for_not = true;
 				continue;
-			}				
+			}
 
 			if (for_not)
-				buf_word.str = neg + buf_word.str;
-			res[i].push_back(buf_word);
+				buf_word = neg + buf_word;
+			all_text[i].push_back(buf_word);
 			for_not = false;
 		}
 
 		i++;
 
 	}
-	for (std::vector<std::vector<tcc::word_t> >::iterator it = res.begin(); it != res.end(); ++it) {
-		for (std::vector<tcc::word_t>::iterator it2 = (*it).begin(); it2 != (*it).end(); ++it2) {
+	for (auto it = all_text.begin(); it != all_text.end(); ++it) {
+		for (auto it2 = (*it).begin(); it2 != (*it).end(); ++it2) {
 			trim(*it2);
-			stem_word((*it2).str);
+			stem_word((*it2));
 		}
 	}
+	for (auto it = all_text.begin(); it != all_text.end(); ++it) {
+		//јлиса, заверни во что хочешь и как хочешь, € не понимаю, как это работает
+		//тут it типа std::vector<std::string>
+	}
 
-	return res;
+	return all_text;
 }
 
 void tcc::PorterStemming::stem_word(std::string& word) {
@@ -87,24 +92,24 @@ void tcc::PorterStemming::stem_word(std::string& word) {
 	return;
 }
 
-void tcc::PorterStemming::trim(tcc::word_t& word)
+void tcc::PorterStemming::trim(std::string& word)
 {
-	if (word.str == "<s>" || word.str == "</s>")
+	if (word == "<s>" || word == "</s>")
 		return;
 
-	if (word.str.size() == std::count_if(word.str.begin(), word.str.end(), [](const char& a) { return ::isupper(a); }))
-		word.info = UPPERCASE;
-	else
-		word.info = LOWERCASE;
+	std::count_if(word.begin(), word.end(), [](const char& a) { return ::isupper(a); });
+	//		word.info = UPPERCASE;
+	//	else
+	//		word.info = LOWERCASE;
 
-	std::transform(word.str.begin(), word.str.end(), word.str.begin(), ::tolower);
-	for (std::string::iterator i = word.str.begin(); i != word.str.end();) {
+	std::transform(word.begin(), word.end(), word.begin(), ::tolower);
+	for (std::string::iterator i = word.begin(); i != word.end();) {
 		if (!isalpha(*i)) {
-			word.str.erase(word.str.find(*i), 1);
+			word.erase(word.find(*i), 1);
 			continue;
 		}
 		i++;
-		if (i == word.str.end())
+		if (i == word.end())
 			break;
 	}
 }

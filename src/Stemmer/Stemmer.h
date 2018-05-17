@@ -33,7 +33,7 @@ namespace tcc
 		@param text Структура данных, содержащая в себе текст, подлежащий стеммингу
 		@return Структура данных, содержащая в себе слова, приведенные к начальной форме
 		*/
-		virtual std::vector<std::vector<tcc::word_t>> stem(std::vector<json> text) = 0;
+		virtual std::vector<std::vector<std::string>> stem(std::vector<json> text) = 0;
 	};
 	/**
 	@brief Стеммер Портера
@@ -45,10 +45,10 @@ namespace tcc
 		@param text Структура данных, содержащая в себе текст, подлежащий стеммингу
 		@return Структура данных, содержащая в себе слова, приведенные к начальной форме
 		*/
-		std::vector<std::vector<tcc::word_t>> stem(std::vector<json> text);
+		std::vector<std::vector<std::string>> stem(std::vector<json> text);
 
 	private:
-		void trim(tcc::word_t& word);
+		void trim(std::string& word);
 		void stem_word(std::string& word);
 		size_t firstNonVowelAfterVowel(const std::string& word, size_t start);
 		size_t getStartR1(const std::string& word);
