@@ -24,38 +24,51 @@ namespace tcc {
 	class Controller {
 	private:
 		std::shared_ptr<DataProvider> _train_data_provider;
-		//препроцессор
+		std::shared_ptr<DataProvider> _data_provider;
+		std::shared_ptr<StreamDataWriter> _consumer;
 		RandomCore _core;
-		StreamDataWriter _consumer;
+		std::vector<json> _data;
+		bool _init;
 		int _dims = 100;
-		std::vector<std::vector<double>> _results;
+		//std::vector<std::vector<double>> _results;
 
-		void _process_data();
+		std::vector<json> load_data(std::shared_ptr<DataProvider> provider) { return provider->get_data(); }
+		void save() { *_consumer << _data; };
+		void close() { *_consumer << _data; };
 	public:
 		/**
 		@brief Конструктор класса
 		@param data_provider Указатель на используемый провайдер
 		*/
-		Controller(std::shared_ptr<DataProvider> data_provider)
-			: _train_data_provider(data_provider) {};
+		Controller(std::shared_ptr<DataProvider> train_data_provider, std::shared_ptr<DataProvider> data_provider,
+			std::shared_ptr<StreamDataWriter> consumer)
+			: _train_data_provider(data_provider), _data_provider(data_provider), _consumer(consumer)
+		{
+			_init = 0;
+			//добавить инициализацию ядра
+		};
 		/**
 		@brief Инициализация классификатора
 		*/
-		void init() { _process_data(); _core.trainLoop(); };
+		void init() 
+		{ 
+			load_data(_train_data_provider);
+			//stemming
+			_core.trainLoop(); 
+			_init = 1;
+		};
 		/**
 		@brief Обработка текста
 		*/
-		void run(textVec& texts)
+		void run()
 		{
-			_results.push_back(_core.run(texts));
+			if (!_init)
+				init();
+
+			_data = load_data(_data_provider);
+			// stemming
+			// calculating
+			save();
 		};
-		/**
-		@brief Сохранить текущий результат
-		*/
-		void save() { _consumer << _results; };
-		/**
-		@brief сохранить то, что осталось в буфере перед выыходом
-		*/
-		void close() { _consumer << _results; };
 	};
 }
