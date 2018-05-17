@@ -4,8 +4,6 @@
 namespace tcc {
 	BOW::BOW(textVec& texts)
 	{
-		std::hash<std::string> hash_fn;
-
 		for (auto word : texts)
 		{
 			add_word(word);
@@ -16,6 +14,7 @@ namespace tcc {
 	{
 		std::hash<std::string> hash_fn;
 
+
 		auto node = _root->_find(hash_fn(w));
 		if (node)
 		{
@@ -24,7 +23,7 @@ namespace tcc {
 		else
 		{
 			node = new BSTNode(Word(hash_fn(w), 1));
-			_root->_insert(node);
+			_root = _root->_insert(node);
 		}
 	}
 

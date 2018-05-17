@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include "includes/json.hpp"
+#include "Classification/BOW.h"
 
 
 using json = nlohmann::json;
@@ -33,7 +34,7 @@ namespace tcc
 		@param text Структура данных, содержащая в себе текст, подлежащий стеммингу
 		@return Структура данных, содержащая в себе слова, приведенные к начальной форме
 		*/
-		virtual std::vector<std::vector<std::string>> stem(std::vector<json> text) = 0;
+		virtual tcc::BOW stem(std::vector<json> text) = 0;
 	};
 	/**
 	@brief Стеммер Портера
@@ -45,7 +46,7 @@ namespace tcc
 		@param text Структура данных, содержащая в себе текст, подлежащий стеммингу
 		@return Структура данных, содержащая в себе слова, приведенные к начальной форме
 		*/
-		std::vector<std::vector<std::string>> stem(std::vector<json> text);
+		tcc::BOW stem(std::vector<json> text);
 
 	private:
 		void trim(std::string& word);

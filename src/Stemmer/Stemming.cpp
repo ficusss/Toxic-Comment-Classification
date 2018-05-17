@@ -47,8 +47,7 @@ std::vector<std::vector<std::string>> tcc::PorterStemming::stem(std::vector<json
 		}
 	}
 	for (auto it = all_text.begin(); it != all_text.end(); ++it) {
-		//Алиса, заверни во что хочешь и как хочешь, я не понимаю, как это работает
-		//тут it типа std::vector<std::string>
+		
 	}
 
 	return all_text;

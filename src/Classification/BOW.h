@@ -16,6 +16,10 @@ namespace tcc {
 		*/
 		BOW(textVec& texts);
 		/**
+		@brief Конструктор экземпляра класса
+		*/
+		BOW() { _root = new tcc::BSTNode(Word(0, 0)); }
+		/**
 		@brief Добавление слова в словарь
 		@param s - строка, содержащая слово
 		*/
