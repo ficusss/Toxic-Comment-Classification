@@ -9,10 +9,9 @@
 //основная функция стеммера, приклеивает not к след слову и обрезает окончания
 //на вход - то, что отдал провайдер
 //на выходе - вектор векторов (матрица), где строка матрицы - один комментарий, все слова приведены к начальной форме
-std::vector<std::vector<std::string>> tcc::PorterStemming::stem(std::vector<json> text) {
+tcc::BOW tcc::PorterStemming::stem(std::vector<json> text) {
 
 	std::vector<std::vector<std::string>> all_text(text.size(), std::vector<std::string>());
-	//std::vector<tcc::BOW> res(text.size());
 	std::string buf_comment;
 	std::string buf_word;
 	std::string tag = "comment_text";
@@ -46,11 +45,19 @@ std::vector<std::vector<std::string>> tcc::PorterStemming::stem(std::vector<json
 			stem_word((*it2));
 		}
 	}
-	for (auto it = all_text.begin(); it != all_text.end(); ++it) {
-		
+
+	tcc::BOW res = tcc::BOW();
+
+	for (auto comment : all_text)
+	{
+		for (auto word : comment)
+		{
+			res.add_word(word);
+		}
 	}
 
-	return all_text;
+	return res;
+
 }
 
 void tcc::PorterStemming::stem_word(std::string& word) {
@@ -457,9 +464,9 @@ void tcc::PorterStemming::step5(std::string& word, size_t startR1,
 Determines whether a word ends in a short syllable.
 Define a short syllable in a word as either
 
- (a) a vowel followed by a non-vowel other than w, x or Y and preceded by a
+(a) a vowel followed by a non-vowel other than w, x or Y and preceded by a
 non-vowel
- (b) a vowel at the beginning of the word followed by a non-vowel.
+(b) a vowel at the beginning of the word followed by a non-vowel.
 */
 
 bool tcc::PorterStemming::isShort(const std::string& word)
