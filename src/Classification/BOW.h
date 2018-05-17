@@ -2,8 +2,7 @@
 
 #include "BSTNode.h"
 
-using uint = unsigned int;
-using textVec = std::vector<const std::string>;
+using textVec = std::vector<std::string>;
 
 namespace tcc {
 	/**
@@ -26,7 +25,7 @@ namespace tcc {
 		@param s - искомое слово
 		@returns количество раз, когда слово встретилось в корпусе текстов
 		*/
-		uint find_word(std::string& s);
+		size_t find_word(std::string& s);
 	private:
 		BSTNode* _root;
 	};

@@ -18,14 +18,14 @@ namespace tcc {
 	*/
 
 	struct Word {
-		int word_hash;	/**< Уникальный хэш слова*/
+		size_t word_hash;	/**< Уникальный хэш слова*/
 		double freq;	/**< Встречаемость в тексте*/
 
 		Word() {};
 		Word(int hash, double f) : word_hash(hash), freq(f) {};
-		Word(const Word& r) : word_hash(r.word_hash), freq(r.word_hash) {};
+		Word(const Word& r) : word_hash(r.word_hash), freq(r.freq) {};
 		void _update_freq() { freq++; }
-		const Word& operator= (Word& r) { word_hash = r.word_hash;  freq = r.word_hash; return r; }
+		const Word& operator= (Word& r) { word_hash = r.word_hash;  freq = r.freq; return r; }
 	};
 
 	/**
@@ -40,7 +40,7 @@ namespace tcc {
 		BSTNode(Word& r) { w = r; left = right = nullptr; height = 1; }
 		BSTNode* _insert(BSTNode* w);
 		BSTNode* _balance(BSTNode* pivot);
-		const BSTNode* _find(int key) const;
+		BSTNode* _find(int key);
 		double _find_value(int word_hash) { return _find(word_hash)->w.freq; }
 
 		void _release();

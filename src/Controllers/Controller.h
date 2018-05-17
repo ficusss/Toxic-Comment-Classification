@@ -1,4 +1,6 @@
-﻿#include <memory>
+﻿#pragma once
+
+#include <memory>
 #include "DataProviders/DataProvider.h"
 #include "Cores/Core.h"
 #include "DataConsumers/StreamDataWriter.h"

@@ -5,7 +5,6 @@
 
 
 using json = nlohmann::json;
-using textVec = std::vector<bool>;
 using labels = std::array<bool, 5>;
 using labeledText = std::vector<std::pair<textVec, labels>>;
 
@@ -44,6 +43,7 @@ namespace tcc {
 		@param model вектор классификаторов, задающих используемую модель
 		*/
 		RandomCore(std::vector<std::shared_ptr<Classifyer>> model) { _model = model; }
+		RandomCore() = default;
 		~RandomCore() override = default;
 
 		/**
@@ -53,6 +53,6 @@ namespace tcc {
 		std::vector<double> run(textVec& t) const override;
 		
 		void trainLoop() override 
-		{ for (auto el : _model) el->train(); };
+		{ for (auto el : _model) el->train(); }
 	};
 }

@@ -1,6 +1,9 @@
-﻿#include <vector>
+﻿#pragma once
+
+#include <vector>
 #include <string>
 #include <fstream>
+#include <iostream>
 #include <ostream>
 #include "../includes/json.hpp"
 
@@ -31,6 +34,8 @@ namespace tcc {
 				_cur_state = OPENING_FAIL;
 		}
 
+		StreamDataWriter() = default;
+
 		/**
 		@brief Конструктор экземпляра класса
 		@param file_name Имя файла для записи. При отсутсвии запись ведется в консоль
@@ -50,14 +55,14 @@ namespace tcc {
 		*/
 		template<typename T>
 		State operator<<(std::vector<T>& vec_el) {
-			for (auto el : vec_el) {
+			for (T el : vec_el) {
 				if (_output) {
-					*(_output) << el;
+					*(_output) << json(el);
 					*(_output) << '\n';
 					_output->flush();
 				}
 				else
-					std::cout << el << std::endl;
+					std::cout << json(el) << std::endl;
 
 				if (_output->rdstate() == std::ios::badbit) {
 					_cur_state = State::FORMAT_FAIL;
@@ -81,11 +86,11 @@ namespace tcc {
 		template<typename T>
 		State operator<<(T& el) {
 			if (_output) {
-				*(_output) << el;
+				*(_output) << json(el);
 				_output->flush();
 			}
 			else {
-				std::cout << el;
+				std::cout << json(el);
 				return _cur_state;
 			}
 
@@ -103,7 +108,13 @@ namespace tcc {
 		/**
 		@brief Закрытие потока
 		*/
-		State close() { if (_output) _output->close(); return _cur_state; }
+		State close() {
+			if (_output) {
+				_output->close();
+				delete _output;
+			}
+			return _cur_state;
+		}
 	private:
 		std::ofstream* _output = nullptr;
 		State _cur_state = GOOD;

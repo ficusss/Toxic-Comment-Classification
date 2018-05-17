@@ -8,7 +8,7 @@ namespace tcc {
 	/**
 	@brief Вектор текстов
 	*/
-	using textVec = std::vector<const std::string>;
+	using textVec = std::vector<std::string>;
 	/**
 	@brief Вектор текстов с тегами
 	*/
@@ -29,12 +29,12 @@ namespace tcc {
 		@returns вероятность принадлежности текста категории
 		*/
 		virtual double run(textVec& text) const = 0;
-		virtual ~Classifyer() override = default;
+		virtual ~Classifyer() = default;
 	};
 	/**
 	@brief Наивный байесовский классификатор
 	*/
-	class NaiveBayesClassifyer : Classifyer {
+	class NaiveBayesClassifyer : public Classifyer {
 	public:
 		/**
 		@brief Конструктор экземпляра класса
@@ -49,24 +49,4 @@ namespace tcc {
 		double _logLike(std::string& word) const;
 		std::shared_ptr<Features> bow = nullptr;
 	};
-
-
-	double NaiveBayesClassifyer::_logLike(std::string& word) const {
-		return bow->extract_feature(word, [](double x)
-		{
-			return std::log((x + 1) / (x + 1));
-		}
-		);
-	}
-
-	double NaiveBayesClassifyer::run(textVec& text) const {
-		double labelProb = 0.5;
-
-		for (auto word : text) {
-			labelProb += _logLike(word);
-		}
-
-		return std::exp(labelProb) / std::exp(labelProb + 1);
-	}
-
 }
