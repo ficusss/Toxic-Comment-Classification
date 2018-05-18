@@ -52,7 +52,8 @@ tcc::BOW tcc::PorterStemming::stem(std::vector<json> text) {
 	{
 		for (auto word : comment)
 		{
-			res.add_word(word);
+			if(word.size() != 0)
+				res.add_word(word);
 		}
 	}
 
@@ -103,14 +104,14 @@ void tcc::PorterStemming::trim(std::string& word)
 	if (word == "<s>" || word == "</s>")
 		return;
 
-	std::count_if(word.begin(), word.end(), [](const char& a) { return ::isupper(a); });
+	//std::count_if(word.begin(), word.end(), [](const char& a) { return ::isupper(a); });
 	//		word.info = UPPERCASE;
 	//	else
 	//		word.info = LOWERCASE;
 
 	std::transform(word.begin(), word.end(), word.begin(), ::tolower);
 	for (std::string::iterator i = word.begin(); i != word.end();) {
-		if (!isalpha(*i)) {
+		if (!('a' <= *i && *i <= 'z')) {
 			word.erase(word.find(*i), 1);
 			continue;
 		}

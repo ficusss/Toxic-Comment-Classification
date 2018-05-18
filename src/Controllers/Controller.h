@@ -4,6 +4,7 @@
 #include "DataProviders/DataProvider.h"
 #include "Cores/Core.h"
 #include "DataConsumers/StreamDataWriter.h"
+#include "../Stemmer/Stemmer.h"
 
 /**
 namespace tcc
@@ -62,12 +63,21 @@ namespace tcc {
 		*/
 		void run()
 		{
+			//initializing
 			if (!_init)
 				init();
-
+			
+			//load data
 			_data = load_data(_data_provider);
+			
 			// stemming
+			auto stem = tcc::PorterStemming();
+			auto stem_data = stem.stem(_data);
+			
 			// calculating
+			// ...
+			
+			//save result
 			save();
 		};
 	};
