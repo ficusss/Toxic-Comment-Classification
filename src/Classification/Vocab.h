@@ -60,15 +60,20 @@ namespace tcc {
 	class BOWFeatures : public Features {
 	private:
 		std::shared_ptr<BOW> _global;
-		std::vector<uint> _non_zero_hash;
-		std::vector<uint> _non_zero_val;
-		
 	public:
 		/**
 		@brief Конструктор экземпляра класса
 		@param global - информация о словах, встречающихся в корпусе текстов
 		*/
 		BOWFeatures(std::shared_ptr<BOW> global): _global(global) {};
+		void add(std::string word, bool label)
+		{
+			if (label)
+			{
+				std::hash<std::string> hash_fn;
+
+			}
+		}
 		~BOWFeatures() override = default;
 	};
 }

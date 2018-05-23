@@ -2,15 +2,7 @@
 #include "Classification/BOW.h"
 
 namespace tcc {
-	BOW::BOW(textVec& texts)
-	{
-		for (auto word : texts)
-		{
-			add_word(word);
-		}
-	}
-
-	void BOW::add_word(std::string& w)
+	void BOW::add_word(std::string& w, json tags)
 	{
 		std::hash<std::string> hash_fn;
 
@@ -18,19 +10,24 @@ namespace tcc {
 		auto node = _root->_find(hash_fn(w));
 		if (node)
 		{
-			node->w._update_freq();
+			node->w._update_freq(tags);
 		}
 		else
 		{
-			node = new BSTNode(Word(hash_fn(w), 1));
+			node = new BSTNode(Word(hash_fn(w), 0));
+			node->w._update_freq(tags);
 			_root = _root->_insert(node);
 		}
 	}
 
-	size_t BOW::find_word(std::string& s)
+	tcc::Word BOW::find_word(std::string& s)
 	{
 		std::hash<std::string> hash_fn;
+		auto res = _root->_find(hash_fn(s));
 
-		return  _root->_find_value(hash_fn(s));
+		if (res)
+			return res->w;
+
+		return  Word(0, 0);
 	}
 }

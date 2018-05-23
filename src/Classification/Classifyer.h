@@ -40,13 +40,14 @@ namespace tcc {
 		@brief Конструктор экземпляра класса
 		@param v - информация о словах, встречающихся в корпусе текстов
 		*/
-		NaiveBayesClassifyer(std::shared_ptr<Features>& v) : bow(v) {};
+		NaiveBayesClassifyer(std::shared_ptr<BOW>& v, int i) : bow(v), _ind(i) {};
 		~NaiveBayesClassifyer() override = default;
 
 		void train() override {};
 		double run(textVec& text) const override;
 	private:
 		double _logLike(std::string& word) const;
-		std::shared_ptr<Features> bow = nullptr;
+		int _ind;
+		std::shared_ptr<BOW> bow = nullptr;
 	};
 }

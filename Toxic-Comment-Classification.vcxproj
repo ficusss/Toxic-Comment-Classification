@@ -21,9 +21,9 @@
   <ItemGroup>
     <ClInclude Include="src\Classification\BOW.h" />
     <ClInclude Include="src\Classification\BSTNode.h" />
+    <ClInclude Include="src\Classification\Classifyer.h" />
     <ClInclude Include="src\Controllers\Controller.h" />
     <ClInclude Include="src\Classification\Vocab.h" />
-    <ClInclude Include="src\Classification\Classifyer.h" />
     <ClInclude Include="src\Cores\Core.h" />
     <ClInclude Include="src\DataConsumers\StreamDataWriter.h" />
     <ClInclude Include="src\DataPreprocessing\DataPreprocessing.h" />
@@ -38,6 +38,7 @@
     <ClCompile Include="src\cmdParser.cpp" />
     <ClCompile Include="src\Cores\RandomCore.cpp" />
     <ClCompile Include="src\DataProviders\KaggleDataProvider.cpp" />
+    <ClCompile Include="src\NaiveBayesClassifyer.cpp" />
     <ClCompile Include="src\Stemmer\Stemming.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -92,6 +93,9 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>$(ProjectDir)src;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)/src</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

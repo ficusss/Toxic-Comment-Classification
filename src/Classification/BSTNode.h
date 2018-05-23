@@ -1,8 +1,13 @@
 #pragma once
 
 #include<vector>
+#include<array>
 #include<algorithm>
 #include<stack>
+#include "includes/json.hpp"
+
+
+using json = nlohmann::json;
 
 #define RIGHT_LEFT 2
 #define LEFT_RIGHT -2
@@ -20,11 +25,23 @@ namespace tcc {
 	struct Word {
 		size_t word_hash;	/**< Уникальный хэш слова*/
 		double freq;	/**< Встречаемость в тексте*/
+		std::array<size_t, 6> categories_freq = {0, 0, 0, 0, 0, 0}; /**< Встречаемость в текстах, относящихся к категории */
 
 		Word() {};
 		Word(int hash, double f) : word_hash(hash), freq(f) {};
 		Word(const Word& r) : word_hash(r.word_hash), freq(r.freq) {};
-		void _update_freq() { freq++; }
+		void _update_freq(json tags) {
+			freq++;
+			auto i = 0;
+
+			for (json::iterator it = tags.begin(); it != tags.end(); ++it)
+			{				
+				if (it.value())
+					categories_freq[i]++;
+				i++;
+
+			}
+		}
 		const Word& operator= (Word& r) { word_hash = r.word_hash;  freq = r.freq; return r; }
 	};
 
@@ -41,7 +58,6 @@ namespace tcc {
 		BSTNode* _insert(BSTNode* w);
 		BSTNode* _balance(BSTNode* pivot);
 		BSTNode* _find(int key);
-		double _find_value(int word_hash) { return _find(word_hash)->w.freq; }
 
 		void _release();
 		static int _height(BSTNode* n) { if (n) return n->height; return 0; }

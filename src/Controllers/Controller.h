@@ -4,7 +4,7 @@
 #include "DataProviders/DataProvider.h"
 #include "Cores/Core.h"
 #include "DataConsumers/StreamDataWriter.h"
-#include "../Stemmer/Stemmer.h"
+#include "Stemmer/Stemmer.h"
 
 /**
 namespace tcc
@@ -41,7 +41,8 @@ namespace tcc {
 		@brief Конструктор класса
 		@param data_provider Указатель на используемый провайдер
 		*/
-		Controller(std::shared_ptr<DataProvider> train_data_provider, std::shared_ptr<DataProvider> data_provider,
+		Controller(std::shared_ptr<DataProvider> train_data_provider,
+			std::shared_ptr<DataProvider> data_provider,
 			std::shared_ptr<StreamDataWriter> consumer)
 			: _train_data_provider(data_provider), _data_provider(data_provider), _consumer(consumer)
 		{
@@ -66,13 +67,16 @@ namespace tcc {
 			//initializing
 			if (!_init)
 				init();
-			
+
 			//load data
 			_data = load_data(_data_provider);
-			
+
 			// stemming
 			auto stem = tcc::PorterStemming();
 			auto stem_data = stem.stem(_data);
+			auto data_ptr = std::shared_ptr<BOW>(&stem_data);
+			auto core = RandomCore(data_ptr, 5);
+			auto res = core.run(std::vector<std::string>({"the", "two"}));
 			
 			// calculating
 			// ...

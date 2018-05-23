@@ -1,5 +1,7 @@
 ﻿#include "includes/json.hpp"
+
 #include "Classification/Classifyer.h"
+#include "Classification/BOW.h"
 
 #define LABELS_COUNT 5
 
@@ -43,6 +45,13 @@ namespace tcc {
 		@param model вектор классификаторов, задающих используемую модель
 		*/
 		RandomCore(std::vector<std::shared_ptr<Classifyer>> model) { _model = model; }
+		RandomCore(std::shared_ptr<BOW> b, int tags_count)
+		{
+			for (auto i = 0; i < tags_count; i++)
+			{
+				_model.push_back(std::shared_ptr<Classifyer>(new NaiveBayesClassifyer(b, i)));
+			}
+		}
 		RandomCore() = default;
 		~RandomCore() override = default;
 
