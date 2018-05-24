@@ -1,4 +1,5 @@
 ﻿#include "DataProvider.h"
+#include <iostream>
 
 const char* tcc::KaggleDataProvider::s_quot = "\",";
 const char tcc::KaggleDataProvider::s_delim = ',';
@@ -9,6 +10,10 @@ json tcc::KaggleDataProvider::_sample_to_json(std::vector<std::string>& text, st
 	json result;
 	std::vector<std::pair<std::string, std::string>> tags_list;
 	std::vector<std::pair<std::string, bool>> classes_list;
+
+	if (ratings.size() < 6) {
+		ratings.resize(6);
+	}
 
 	tags_list.resize(json_tags.size() - 1);
 	std::transform(json_tags.begin(), json_tags.end() - 1, text.begin(), tags_list.begin(),
@@ -75,6 +80,7 @@ std::vector<json> tcc::KaggleDataProvider::get_data() const{
 		return result;
 
 	try {
+		int i = 0;
 		while (src.good()) {
 			std::vector<std::string> buff;
 			if (!getline(src, line))
@@ -87,7 +93,10 @@ std::vector<json> tcc::KaggleDataProvider::get_data() const{
 				while (!line.size()) getline(src, line);;
 			}
 			buff.push_back(text);
-			result.push_back(static_cast<json&&> (_sample_to_json(buff, _parse_rating(line))));
+			auto ratings = _parse_rating(line);			
+			result.push_back(static_cast<json&&> (_sample_to_json(buff, ratings)));
+			std::cout << i << std::endl;
+			i++;
 		}
 	}
 	catch (std::bad_alloc) {
