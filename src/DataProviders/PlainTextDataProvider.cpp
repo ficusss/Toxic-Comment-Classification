@@ -3,7 +3,7 @@
 #include<fstream>
 #include<string>
 
-std::vector<json> tcc::KaggleDataProvider::get_data() const
+std::vector<json> tcc::PlainTextDataProvider::get_data() const
 {
     std::vector<json> result = {};
     std::string line, text;

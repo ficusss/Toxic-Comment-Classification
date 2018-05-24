@@ -38,16 +38,15 @@ namespace tcc {
             @brief Конструктор класса
             @param input_file Имя файла для чтения
             */
-            KaggleDataProvider(std::string& input_file)
+            PlainTextDataProvider(std::string& input_file)
                     : _input_file(input_file) {};
             /**
             @brief Конструктор копии экземпляра класса
             @param rv Копируемый экземпляр
             */
-            KaggleDataProvider(const KaggleDataProvider& rv)
+            PlainTextDataProvider(const PlainTextDataProvider& rv)
                     : _input_file(rv._input_file) {};
 
-            //int labels_count() const override { return 5; }
 
             /**
             @brief Функция для считывания данных из файла
