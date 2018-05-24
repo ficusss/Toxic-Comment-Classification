@@ -19,12 +19,16 @@ tcc::BOW tcc::PorterStemming::stem(std::vector<json> text) {
 	bool for_not = false;
 
 	size_t i = 0;
+	tcc::BOW res = tcc::BOW();
+	int k = 0;
+
 	for (json el : text) {
 
 		buf_comment = el[tag];
 
 		std::istringstream iss(buf_comment, std::istringstream::in);
 		while (iss >> buf_word) {
+			std::cout << buf_word;
 			if (buf_word == "not") {
 				for_not = true;
 				continue;
@@ -32,33 +36,19 @@ tcc::BOW tcc::PorterStemming::stem(std::vector<json> text) {
 
 			if (for_not)
 				buf_word = neg + buf_word;
-			all_text[i].push_back(buf_word);
+			trim(buf_word);
+			stem_word(buf_word);
+
+			res.add_word(buf_word, el["rating"]);
 			for_not = false;
 		}
-
 		i++;
 
-	}
-	for (auto it = all_text.begin(); it != all_text.end(); ++it) {
-		for (auto it2 = (*it).begin(); it2 != (*it).end(); ++it2) {
-			trim(*it2);
-			stem_word((*it2));
-		}
-	}
-
-	tcc::BOW res = tcc::BOW();
-
-	for (auto comment : all_text)
-	{
-		for (auto word : comment)
-		{
-			if (word.size() != 0)
-				res.add_word(word);
-		}
 	}
 
 	return res;
 }
+
 std::vector<std::string> tcc::PorterStemming::stem_string_to_vec(std::string text)
 {
 	std::vector<std::string> res;
