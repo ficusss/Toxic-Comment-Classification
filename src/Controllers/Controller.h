@@ -59,7 +59,7 @@ namespace tcc {
 			_train_data = load_data(_train_data_provider);
 			_train_stem_data = _stem.stem(_train_data);
 			_train_stem_data_ptr = std::make_shared<tcc::BOW> (_train_stem_data);
-			_core = tcc::RandomCore(_train_stem_data_ptr, 5);
+			_core = tcc::RandomCore(_train_stem_data_ptr, 6);
 			_init = 1;
 		};
 		/**
@@ -78,18 +78,27 @@ namespace tcc {
 			for (auto text : texts)
 			{
 				// stemming
-				//auto stem_text = stem_string_to_vec(text);
+				auto stem_text = _stem.stem_string_to_vec(text["comment_text"]);
 
 				// calculating
-				//auto ratings = _core.run(stem_text);
-				//auto classes = { "toxic", "severe_toxic", "obscene", "threat", "insult", "identity_hate" };
-				//std::vector<std::pair<std::string, double>> classes_list;
-				//classes_list.resize(classes.size());
-				//std::transform(classes.begin(), classes.end(), ratings.begin(), classes_list.begin(),
-				//	std::make_pair<std::string, bool>);
-				//for (auto el : classes_list)
-				//	text["rating"][el.first] = el.second;
+				auto ratings = _core.run(stem_text);
+				
+				text["rating"]["toxic"] = ratings[0];
+				text["rating"]["severe_toxic"] = ratings[1];
+				text["rating"]["obscene"] = ratings[2];
+				text["rating"]["threat"] = ratings[3];
+				text["rating"]["insult"] = ratings[4];
+				text["rating"]["identity_hate"] = ratings[5];
 
+				/*
+				auto classes = { "toxic", "severe_toxic", "obscene", "threat", "insult", "identity_hate" };
+				std::vector<std::pair<std::string, double>> classes_list;
+				classes_list.resize(classes.size());
+				std::transform(classes.begin(), classes.end(), ratings.begin(), classes_list.begin(),
+					std::make_pair<std::string, double>);
+				for (auto el : classes_list)
+					text["rating"][el.first] = el.second;
+				*/
 				_res.push_back(text);
 			}
 
