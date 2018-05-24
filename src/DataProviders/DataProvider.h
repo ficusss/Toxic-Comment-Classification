@@ -27,6 +27,37 @@ namespace tcc {
 		virtual ~DataProvider() {};
 	};
 
+        /**
+        @brief Класс для считывания одного комменатрия из текстового файла.
+        */
+        class PlainTextDataProvider : public DataProvider {
+        private:
+            std::string _input_file;
+        public:
+            /**
+            @brief Конструктор класса
+            @param input_file Имя файла для чтения
+            */
+            KaggleDataProvider(std::string& input_file)
+                    : _input_file(input_file) {};
+            /**
+            @brief Конструктор копии экземпляра класса
+            @param rv Копируемый экземпляр
+            */
+            KaggleDataProvider(const KaggleDataProvider& rv)
+                    : _input_file(rv._input_file) {};
+
+            //int labels_count() const override { return 5; }
+
+            /**
+            @brief Функция для считывания данных из файла
+            @return Вектор структур данных, содержащих в себе считанные данные
+            @throw IOException Исключение возникающее при проблемах с чтением файла
+            */
+            std::vector<json> get_data() const override;
+
+        }
+
 	/**
 	@brief Класс для считывания тренировочных образцов с сайта Kaggle
 	*/
