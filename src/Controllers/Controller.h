@@ -72,7 +72,8 @@ namespace tcc {
 				init();
 
 			//load data
-			std::vector<json> text = load_data(_data_provider);
+			std::vector<json> texts = load_data(_data_provider);
+			json text = texts[0];
 
 			// stemming
 			//auto stem_text = stem_string_to_vec(text);
@@ -87,7 +88,7 @@ namespace tcc {
 			//for (auto el : classes_list)
 			//	text[std::string("rating")][el.first] = el.second;
 
-			_res = text;
+			_res = { text };
 
 			//save result
 			save();

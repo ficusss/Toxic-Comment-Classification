@@ -74,5 +74,8 @@
     <ClCompile Include="src\NaiveBayesClassifyer.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
+    <ClCompile Include="src\DataProviders\PlainTextDataProvider.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

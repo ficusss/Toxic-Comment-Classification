@@ -3,11 +3,13 @@
 #include<fstream>
 #include<string>
 
+
+
 std::vector<json> tcc::PlainTextDataProvider::get_data() const
 {
     std::vector<json> result = {};
     std::string line, text;
-    std::infile in(_input_file);
+    std::ifstream in(_input_file);
     json j;
     while(std::getline(in, line))
     {

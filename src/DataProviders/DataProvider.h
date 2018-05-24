@@ -27,35 +27,34 @@ namespace tcc {
 		virtual ~DataProvider() {};
 	};
 
+    /**
+    @brief Класс для считывания одного комменатрия из текстового файла.
+    */
+    class PlainTextDataProvider : public DataProvider {
+    private:
+        std::string _input_file;
+    public:
         /**
-        @brief Класс для считывания одного комменатрия из текстового файла.
+        @brief Конструктор класса
+        @param input_file Имя файла для чтения
         */
-        class PlainTextDataProvider : public DataProvider {
-        private:
-            std::string _input_file;
-        public:
-            /**
-            @brief Конструктор класса
-            @param input_file Имя файла для чтения
-            */
-            PlainTextDataProvider(std::string& input_file)
-                    : _input_file(input_file) {};
-            /**
-            @brief Конструктор копии экземпляра класса
-            @param rv Копируемый экземпляр
-            */
-            PlainTextDataProvider(const PlainTextDataProvider& rv)
-                    : _input_file(rv._input_file) {};
+        PlainTextDataProvider(std::string& input_file)
+                : _input_file(input_file) {};
+        /**
+        @brief Конструктор копии экземпляра класса
+        @param rv Копируемый экземпляр
+        */
+        PlainTextDataProvider(const PlainTextDataProvider& rv)
+                : _input_file(rv._input_file) {};
 
 
-            /**
-            @brief Функция для считывания данных из файла
-            @return Вектор структур данных, содержащих в себе считанные данные
-            @throw IOException Исключение возникающее при проблемах с чтением файла
-            */
-            std::vector<json> get_data() const override;
-
-        }
+        /**
+        @brief Функция для считывания данных из файла
+        @return Вектор структур данных, содержащих в себе считанные данные
+        @throw IOException Исключение возникающее при проблемах с чтением файла
+        */
+        std::vector<json> get_data() const override;
+	};
 
 	/**
 	@brief Класс для считывания тренировочных образцов с сайта Kaggle

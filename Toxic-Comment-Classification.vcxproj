@@ -38,6 +38,7 @@
     <ClCompile Include="src\cmdParser.cpp" />
     <ClCompile Include="src\Cores\RandomCore.cpp" />
     <ClCompile Include="src\DataProviders\KaggleDataProvider.cpp" />
+    <ClCompile Include="src\DataProviders\PlainTextDataProvider.cpp" />
     <ClCompile Include="src\NaiveBayesClassifyer.cpp" />
     <ClCompile Include="src\Stemmer\Stemming.cpp" />
   </ItemGroup>
