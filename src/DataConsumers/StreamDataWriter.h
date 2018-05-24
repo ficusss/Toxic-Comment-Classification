@@ -30,8 +30,11 @@ namespace tcc {
 		*/
 		StreamDataWriter(std::string& file_name) {
 			_output = new std::ofstream(file_name);
+
 			if (!_output->is_open())
 				_cur_state = OPENING_FAIL;
+
+			(*_output) << "[";
 		}
 
 		StreamDataWriter() = default;
@@ -58,7 +61,7 @@ namespace tcc {
 			for (T el : vec_el) {
 				if (_output) {
 					*(_output) << json(el);
-					*(_output) << '\n';
+					*(_output) << ",\n";
 					_output->flush();
 				}
 				else
@@ -74,6 +77,7 @@ namespace tcc {
 					return _cur_state;
 				}
 			}
+
 			return _cur_state;
 		};
 
@@ -110,6 +114,7 @@ namespace tcc {
 		*/
 		State close() {
 			if (_output) {
+				(*_output) << "]";
 				_output->close();
 				delete _output;
 			}

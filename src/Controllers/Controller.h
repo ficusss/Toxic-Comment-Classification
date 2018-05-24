@@ -36,7 +36,11 @@ namespace tcc {
 		int _dims = 100;
 
 		std::vector<json> load_data(std::shared_ptr<DataProvider> provider) { return provider->get_data(); }
-		void save() { *_consumer << _res; };
+		void save() 
+		{ 
+			*_consumer << _res;
+			_consumer->close();
+		};
 		void close() { *_consumer << _res; };
 	public:
 		/**

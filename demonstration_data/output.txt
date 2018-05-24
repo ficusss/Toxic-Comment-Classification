@@ -1,4 +1,5 @@
-{"comment_text":"Hi Explicit, can you block O Fenian for edit-warring on the Giant's Causeway wp. He has made several edits which can only be described as terrorism.afasf ","rating":{"identity_hate":0.0,"insult":0.0,"obscene":0.0,"severe_toxic":0.0,"threat":0.0,"toxic":0.0}}
-{"comment_text":"new text ","rating":{"identity_hate":0.0,"insult":0.0,"obscene":0.0,"severe_toxic":0.0,"threat":0.0,"toxic":0.0}}
-{"comment_text":" and new text, yet!","rating":{"identity_hate":0.0,"insult":0.0,"obscene":0.0,"severe_toxic":0.0,"threat":0.0,"toxic":0.0}}
-{"comment_text":" and new text, yet! ----- and new text, yet!","rating":{"identity_hate":0.0,"insult":0.0,"obscene":0.0,"severe_toxic":0.0,"threat":0.0,"toxic":0.0}}
+[{"comment_text":"Hi Explicit, can you block O Fenian for edit-warring on the Giant's Causeway wp. He has made several edits which can only be described as terrorism.afasf ","rating":{"identity_hate":0.0,"insult":0.0,"obscene":0.0,"severe_toxic":0.0,"threat":0.0,"toxic":0.0}},
+{"comment_text":"new text ","rating":{"identity_hate":0.0,"insult":0.0,"obscene":0.0,"severe_toxic":0.0,"threat":0.0,"toxic":0.0}},
+{"comment_text":" and new text, yet!","rating":{"identity_hate":0.0,"insult":0.0,"obscene":0.0,"severe_toxic":0.0,"threat":0.0,"toxic":0.0}},
+{"comment_text":" and new text, yet! ----- and new text, yet!","rating":{"identity_hate":0.0,"insult":0.0,"obscene":0.0,"severe_toxic":0.0,"threat":0.0,"toxic":0.0}},
+]
