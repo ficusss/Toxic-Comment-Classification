@@ -28,7 +28,7 @@ namespace tcc {
 		std::array<size_t, 6> categories_freq = {0, 0, 0, 0, 0, 0}; /**< Встречаемость в текстах, относящихся к категории */
 
 		Word() {};
-		Word(int hash, double f) : word_hash(hash), freq(f) {};
+		Word(size_t hash, double f) : word_hash(hash), freq(f) {};
 		Word(const Word& r) : word_hash(r.word_hash), freq(r.freq) {};
 		void _update_freq(json tags) {
 			freq++;
@@ -57,7 +57,7 @@ namespace tcc {
 		BSTNode(Word& r) { w = r; left = right = nullptr; height = 1; }
 		BSTNode* _insert(BSTNode* w);
 		BSTNode* _balance(BSTNode* pivot);
-		BSTNode* _find(int key);
+		BSTNode* _find(size_t key);
 
 		void _release();
 		static int _height(BSTNode* n) { if (n) return n->height; return 0; }

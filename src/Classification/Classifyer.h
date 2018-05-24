@@ -1,7 +1,9 @@
 ﻿#pragma once
 #include <memory>
 #include <cmath>
-#include "Vocab.h"
+#include <vector>
+#include <string>
+#include <Classification/BOW.h>
 
 
 namespace tcc {
