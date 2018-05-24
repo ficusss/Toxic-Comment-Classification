@@ -35,6 +35,7 @@ namespace tcc
 		@return Структура данных, содержащая в себе слова, приведенные к начальной форме
 		*/
 		virtual tcc::BOW stem(std::vector<json> text) = 0;
+		virtual std::vector<std::string> stem_string_to_vec(std::string text) = 0;
 	};
 	/**
 	@brief Стеммер Портера
@@ -48,6 +49,7 @@ namespace tcc
 		*/
 		tcc::BOW stem(std::vector<json> text);
 		std::vector<json> tcc::PorterStemming::stem_for_print(std::vector<json> text);
+		std::vector<std::string> stem_string_to_vec(std::string text);
 
 	private:
 		void trim(std::string& word);

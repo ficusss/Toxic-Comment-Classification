@@ -59,6 +59,33 @@ tcc::BOW tcc::PorterStemming::stem(std::vector<json> text) {
 
 	return res;
 }
+std::vector<std::string> tcc::PorterStemming::stem_string_to_vec(std::string text)
+{
+	std::vector<std::string> res;
+	//std::string buf_comment;
+	std::string buf_word;
+	bool for_not = false;
+	std::string neg = "not";
+
+	std::istringstream iss(text, std::istringstream::in);
+	while (iss >> buf_word) {
+		if (buf_word == "not") {
+			for_not = true;
+			continue;
+		}
+
+		if (for_not)
+			buf_word = neg + buf_word;
+		trim(buf_word);
+		stem_word(buf_word);
+
+		if (buf_word.size() != 0)
+			res.push_back(buf_word);
+		for_not = false;
+	}
+
+	return res;
+}
 
 std::vector<json> tcc::PorterStemming::stem_for_print(std::vector<json> text) {
 
