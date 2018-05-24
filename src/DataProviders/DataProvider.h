@@ -33,6 +33,8 @@ namespace tcc {
     class PlainTextDataProvider : public DataProvider {
     private:
         std::string _input_file;
+        //Разделитель текстов
+        static const char* s_quot;
     public:
         /**
         @brief Конструктор класса
