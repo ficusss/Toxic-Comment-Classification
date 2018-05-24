@@ -28,7 +28,7 @@ tcc::BOW tcc::PorterStemming::stem(std::vector<json> text) {
 
 		std::istringstream iss(buf_comment, std::istringstream::in);
 		while (iss >> buf_word) {
-			std::cout << buf_word;
+			
 			if (buf_word == "not") {
 				for_not = true;
 				continue;

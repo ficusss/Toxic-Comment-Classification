@@ -27,15 +27,17 @@ namespace tcc {
 		std::shared_ptr<DataProvider> _train_data_provider;
 		std::shared_ptr<DataProvider> _data_provider;
 		std::shared_ptr<StreamDataWriter> _consumer;
-		RandomCore _core;
-		std::vector<json> _data;
+		std::shared_ptr<BOW> _train_stem_data_ptr;
+		tcc::PorterStemming _stem;
+		tcc::RandomCore _core;
+		tcc::BOW _train_stem_data;
+		std::vector<json> _res, _train_data;
 		bool _init;
 		int _dims = 100;
-		//std::vector<std::vector<double>> _results;
 
 		std::vector<json> load_data(std::shared_ptr<DataProvider> provider) { return provider->get_data(); }
-		void save() { *_consumer << _data; };
-		void close() { *_consumer << _data; };
+		void save() { *_consumer << _res; };
+		void close() { *_consumer << _res; };
 	public:
 		/**
 		@brief Конструктор класса
@@ -44,19 +46,20 @@ namespace tcc {
 		Controller(std::shared_ptr<DataProvider> train_data_provider,
 			std::shared_ptr<DataProvider> data_provider,
 			std::shared_ptr<StreamDataWriter> consumer)
-			: _train_data_provider(data_provider), _data_provider(data_provider), _consumer(consumer)
+			: _train_data_provider(train_data_provider), _data_provider(data_provider), _consumer(consumer)
 		{
 			_init = 0;
-			//добавить инициализацию ядра
+			_stem = tcc::PorterStemming();
 		};
 		/**
 		@brief Инициализация классификатора
 		*/
 		void init() 
 		{ 
-			load_data(_train_data_provider);
-			//stemming
-			_core.trainLoop(); 
+			_train_data = load_data(_train_data_provider);
+			_train_stem_data = _stem.stem(_train_data);
+			_train_stem_data_ptr = std::make_shared<tcc::BOW> (_train_stem_data);
+			_core = tcc::RandomCore(_train_stem_data_ptr, 5);
 			_init = 1;
 		};
 		/**
@@ -69,18 +72,17 @@ namespace tcc {
 				init();
 
 			//load data
-			_data = load_data(_data_provider);
+			std::vector<json> text = load_data(_data_provider);
 
 			// stemming
-			auto stem = tcc::PorterStemming();
-			auto stem_data = stem.stem(_data);
-			auto data_ptr = std::shared_ptr<BOW>(&stem_data);
-			auto core = RandomCore(data_ptr, 5);
-			auto res = core.run(std::vector<std::string>({"the", "two"}));
+			// auto stem_text = stem_string_to_vec(text);
 			
 			// calculating
-			// ...
-			
+			// res = _core.run(stem_text);
+			//text["rate"]
+
+			_res = text;
+
 			//save result
 			save();
 		};

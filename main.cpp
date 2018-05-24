@@ -6,17 +6,19 @@
 int main()
 {
 	// demonstration
-	std::string input_file_name = "demonstration_data/train.csv";
+	std::string input_train_file_name = "demonstration_data/train.csv";
+	std::string input_test_file_name = "demonstration_data/test.txt";
 	std::string output_file_name = "demonstration_data/output.txt";
 	
 	// testing
 	//std::string input_file_name = "test_data/train.csv";
 	//std::string output_file_name = "demonstration_data/output.txt";
 
-	auto provider = std::make_shared<tcc::KaggleDataProvider> (tcc::KaggleDataProvider(input_file_name));
+	auto provider = std::make_shared<tcc::KaggleDataProvider> (tcc::KaggleDataProvider(input_train_file_name));
 	auto consumer = std::make_shared<tcc::StreamDataWriter> (tcc::StreamDataWriter(output_file_name));
 
 	auto controller = tcc::Controller(provider, provider, consumer);
+	controller.init();
 	controller.run();
 
 	return 0;
