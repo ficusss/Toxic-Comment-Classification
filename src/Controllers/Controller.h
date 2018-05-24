@@ -73,22 +73,25 @@ namespace tcc {
 
 			//load data
 			std::vector<json> texts = load_data(_data_provider);
-			json text = texts[0];
+			_res = {};
 
-			// stemming
-			//auto stem_text = stem_string_to_vec(text);
-			
-			// calculating
-			//auto ratings = _core.run(stem_text);
-			//auto classes = { "toxic", "severe_toxic", "obscene", "threat", "insult", "identity_hate" };
-			//std::vector<std::pair<std::string, double>> classes_list;
-			//classes_list.resize(classes.size());
-			//std::transform(classes.begin(), classes.end(), ratings.begin(), classes_list.begin(),
-			//	std::make_pair<std::string, bool>);
-			//for (auto el : classes_list)
-			//	text[std::string("rating")][el.first] = el.second;
+			for (auto text : texts)
+			{
+				// stemming
+				//auto stem_text = stem_string_to_vec(text);
 
-			_res = { text };
+				// calculating
+				//auto ratings = _core.run(stem_text);
+				//auto classes = { "toxic", "severe_toxic", "obscene", "threat", "insult", "identity_hate" };
+				//std::vector<std::pair<std::string, double>> classes_list;
+				//classes_list.resize(classes.size());
+				//std::transform(classes.begin(), classes.end(), ratings.begin(), classes_list.begin(),
+				//	std::make_pair<std::string, bool>);
+				//for (auto el : classes_list)
+				//	text["rating"][el.first] = el.second;
+
+				_res.push_back(text);
+			}
 
 			//save result
 			save();
