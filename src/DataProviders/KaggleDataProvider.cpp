@@ -64,7 +64,7 @@ std::vector<bool> tcc::KaggleDataProvider::_parse_rating(std::string& line) cons
 	
 	for (auto el : line) {
 		if (el != s_delim)
-			result.push_back(static_cast<bool&&>(el - '0'));
+			result.push_back((el - '0') & 1);
 	}
 	
 	return result;

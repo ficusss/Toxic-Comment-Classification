@@ -16,7 +16,7 @@ namespace tcc {
 		/**
 		@brief Конструктор экземпляра класса
 		*/
-		BOW() { _root = new tcc::BSTNode(Word(0, 0)); }
+		BOW() { _root = new tcc::BSTNode(std::move(Word(0, 0))); }
 		/**
 		@brief Добавление слова в словарь
 		@param s - строка, содержащая слово

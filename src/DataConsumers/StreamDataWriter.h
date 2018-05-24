@@ -28,7 +28,7 @@ namespace tcc {
 		@brief Конструктор экземпляра класса
 		@param file_name Имя файла для записи. При отсутсвии запись ведется в консоль
 		*/
-		StreamDataWriter(std::string& file_name) {
+		StreamDataWriter(std::string file_name) {
 			_output = new std::ofstream(file_name);
 
 			if (!_output->is_open())
@@ -43,7 +43,7 @@ namespace tcc {
 		@brief Конструктор экземпляра класса
 		@param file_name Имя файла для записи. При отсутсвии запись ведется в консоль
 		*/
-		StreamDataWriter(const char* file_name) : StreamDataWriter(std::string(file_name)) {};
+		StreamDataWriter(const char* file_name) : StreamDataWriter(std::move(std::string(file_name))) {};
 
 		/**
 		@brief Информация о текущем состоянии потока

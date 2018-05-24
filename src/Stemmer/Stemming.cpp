@@ -20,7 +20,6 @@ tcc::BOW tcc::PorterStemming::stem(std::vector<json> text) {
 
 	size_t i = 0;
 	tcc::BOW res = tcc::BOW();
-	int k = 0;
 
 	for (json el : text) {
 
