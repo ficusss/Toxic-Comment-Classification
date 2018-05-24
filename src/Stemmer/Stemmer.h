@@ -47,10 +47,12 @@ namespace tcc
 		@return Структура данных, содержащая в себе слова, приведенные к начальной форме
 		*/
 		tcc::BOW stem(std::vector<json> text);
+		std::vector<json> tcc::PorterStemming::stem_for_print(std::vector<json> text);
 
 	private:
 		void trim(std::string& word);
 		void stem_word(std::string& word);
+		void ignore(std::string& word);
 		size_t firstNonVowelAfterVowel(const std::string& word, size_t start);
 		size_t getStartR1(const std::string& word);
 		size_t getStartR2(const std::string& word, size_t startR1);

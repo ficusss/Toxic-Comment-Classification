@@ -11,7 +11,7 @@
 //на выходе - вектор векторов (матрица), где строка матрицы - один комментарий, все слова приведены к начальной форме
 tcc::BOW tcc::PorterStemming::stem(std::vector<json> text) {
 
-	//std::vector<std::vector<std::string>> all_text(text.size(), std::vector<std::string>());
+	std::vector<std::vector<std::string>> all_text(text.size(), std::vector<std::string>());
 	std::string buf_comment;
 	std::string buf_word;
 	std::string tag = "comment_text";
@@ -19,16 +19,12 @@ tcc::BOW tcc::PorterStemming::stem(std::vector<json> text) {
 	bool for_not = false;
 
 	size_t i = 0;
-	tcc::BOW res = tcc::BOW();
-	int k = 0;
-
 	for (json el : text) {
 
 		buf_comment = el[tag];
 
 		std::istringstream iss(buf_comment, std::istringstream::in);
 		while (iss >> buf_word) {
-			
 			if (buf_word == "not") {
 				for_not = true;
 				continue;
@@ -36,23 +32,92 @@ tcc::BOW tcc::PorterStemming::stem(std::vector<json> text) {
 
 			if (for_not)
 				buf_word = neg + buf_word;
-
-			trim(buf_word);
-			stem_word(buf_word);
-
-			res.add_word(buf_word, el["rating"]);
+			all_text[i].push_back(buf_word);
 			for_not = false;
 		}
 
 		i++;
 
 	}
+	for (auto it = all_text.begin(); it != all_text.end(); ++it) {
+		for (auto it2 = (*it).begin(); it2 != (*it).end(); ++it2) {
+			trim(*it2);
+			stem_word((*it2));
+		}
+	}
+
+	tcc::BOW res = tcc::BOW();
+
+	for (auto comment : all_text)
+	{
+		for (auto word : comment)
+		{
+			if (word.size() != 0)
+				res.add_word(word);
+		}
+	}
 
 	return res;
+}
 
+std::vector<json> tcc::PorterStemming::stem_for_print(std::vector<json> text) {
+
+	std::vector<std::vector<std::string>> all_text(text.size(), std::vector<std::string>());
+	std::string buf_comment;
+	std::string buf_word;
+	std::string tag = "comment_text";
+	std::string neg = "not";
+	bool for_not = false;
+
+	size_t i = 0;
+	for (json el : text) {
+
+		buf_comment = el[tag];
+
+		std::istringstream iss(buf_comment, std::istringstream::in);
+		while (iss >> buf_word) {
+			if (buf_word == "not") {
+				for_not = true;
+				continue;
+			}
+
+			if (for_not)
+				buf_word = neg + buf_word;
+			all_text[i].push_back(buf_word);
+			for_not = false;
+		}
+
+		i++;
+
+	}
+	for (auto it = all_text.begin(); it != all_text.end(); ++it) {
+		for (auto it2 = (*it).begin(); it2 != (*it).end(); ++it2) {
+			trim(*it2);
+			stem_word((*it2));
+		}
+	}
+
+	std::vector<json> res = {};
+	json buf;
+
+	int id = 0;
+	for (auto comment : all_text)
+	{
+		buf["id"] = id;
+		buf["comment_text"] = comment;
+		res.push_back(buf);
+		id++;
+	}
+
+	return res;
 }
 
 void tcc::PorterStemming::stem_word(std::string& word) {
+
+	ignore(word);
+	if (word.size() == 0)
+		return;
+
 	// special case short words or sentence tags
 	if (word.size() <= 2 || word == "<s>" || word == "</s>")
 		return;
@@ -88,6 +153,49 @@ void tcc::PorterStemming::stem_word(std::string& word) {
 
 	std::replace(word.begin(), word.end(), 'Y', 'y');
 	return;
+}
+
+void tcc::PorterStemming::ignore(std::string & word)
+{
+	static const std::vector<std::pair<std::string, std::string>> subs
+		= { { "a", "" },
+		{ "the", "" },
+		{ "at", "" },
+		{ "and", "" },
+		{ "an", "" },
+		{ "all", "" },
+		{ "am", "" },
+		{ "another", "" },
+		{ "any", "" },
+		{ "are", "" },
+		{ "arent", "" },
+		{ "as", "" },
+		{ "at", "" },
+		{ "be", "" },
+		{ "but", "" },
+		{ "by", "" },
+		{ "can", "" },
+		{ "cant", "" },
+		{ "did", "" },
+		{ "didnt", "" },
+		{ "do", "" },
+		{ "does", "" },
+		{ "doesnt", "" },
+		{ "dont", "" },
+		{ "each", "" },
+		{ "end", "" },
+		{ "had", "" },
+		{ "have", "" },
+		{ "hasnt", "" },
+		{ "havent", "" },
+		{ "was", "" },
+		{ "wasnt", "" },
+		{ "that", "" },
+		{ "on", "" } };
+
+	for (auto& sub : subs)
+		if (replaceIfExists(word, sub.first, sub.second, 0))
+			return;
 }
 
 void tcc::PorterStemming::trim(std::string& word)
@@ -174,13 +282,17 @@ void tcc::PorterStemming::step0(std::string& word)
 
 /*
 Step 1a:
+
 sses
 replace by ss
+
 ied   ies
 replace by i if preceded by more than one letter, otherwise by ie
 (so ties -> tie, cries -> cri)
+
 us   ss
 do nothing
+
 s
 delete if the preceding word part contains a vowel not immediately before
 the
@@ -216,8 +328,10 @@ bool tcc::PorterStemming::step1A(std::string& word)
 }
 /*
 Step 1b:
+
 eed   eedly
 replace by ee if in R1
+
 ed   edly   ing   ingly
 delete if the preceding word part contains a vowel, and after the
 deletion:
@@ -258,6 +372,7 @@ void tcc::PorterStemming::step1B(std::string& word, size_t startR1)
 
 /*
 Step 1c:
+
 Replace suffix y or Y by i if preceded by a non-vowel which is not the first
 letter of the word (so cry -> cri, by -> by, say -> say)
 */
@@ -272,7 +387,9 @@ void tcc::PorterStemming::step1C(std::string& word)
 
 /*
 Step 2:
+
 If found and in R1, perform the action indicated.
+
 tional:               replace by tion
 enci:                 replace by ence
 anci:                 replace by ance
@@ -296,27 +413,27 @@ void tcc::PorterStemming::step2(std::string& word, size_t startR1)
 {
 	static const std::vector<std::pair<std::string, std::string>> subs
 		= { { "ational", "ate" },
-	{ "tional", "tion" },
-	{ "enci", "ence" },
-	{ "anci", "ance" },
-	{ "abli", "able" },
-	{ "entli", "ent" },
-	{ "izer", "ize" },
-	{ "ization", "ize" },
-	{ "ation", "ate" },
-	{ "ator", "ate" },
-	{ "alism", "al" },
-	{ "aliti", "al" },
-	{ "alli", "al" },
-	{ "fulness", "ful" },
-	{ "ousli", "ous" },
-	{ "ousness", "ous" },
-	{ "iveness", "ive" },
-	{ "iviti", "ive" },
-	{ "biliti", "ble" },
-	{ "bli", "ble" },
-	{ "fulli", "ful" },
-	{ "lessli", "less" } };
+		{ "tional", "tion" },
+		{ "enci", "ence" },
+		{ "anci", "ance" },
+		{ "abli", "able" },
+		{ "entli", "ent" },
+		{ "izer", "ize" },
+		{ "ization", "ize" },
+		{ "ation", "ate" },
+		{ "ator", "ate" },
+		{ "alism", "al" },
+		{ "aliti", "al" },
+		{ "alli", "al" },
+		{ "fulness", "ful" },
+		{ "ousli", "ous" },
+		{ "ousness", "ous" },
+		{ "iveness", "ive" },
+		{ "iviti", "ive" },
+		{ "biliti", "ble" },
+		{ "bli", "ble" },
+		{ "fulli", "ful" },
+		{ "lessli", "less" } };
 
 	for (auto& sub : subs)
 		if (replaceIfExists(word, sub.first, sub.second, startR1))
@@ -341,7 +458,9 @@ void tcc::PorterStemming::step2(std::string& word, size_t startR1)
 
 /*
 Step 3:
+
 If found and in R1, perform the action indicated.
+
 ational:            replace by ate
 tional:             replace by tion
 alize:              replace by al
@@ -355,13 +474,13 @@ void tcc::PorterStemming::step3(std::string& word, size_t startR1,
 {
 	static const std::vector<std::pair<std::string, std::string>> subs
 		= { { "ational", "ate" },
-	{ "tional", "tion" },
-	{ "alize", "al" },
-	{ "icate", "ic" },
-	{ "iciti", "ic" },
-	{ "ical", "ic" },
-	{ "ful", "" },
-	{ "ness", "" } };
+		{ "tional", "tion" },
+		{ "alize", "al" },
+		{ "icate", "ic" },
+		{ "iciti", "ic" },
+		{ "ical", "ic" },
+		{ "ful", "" },
+		{ "ness", "" } };
 
 	for (auto& sub : subs)
 		if (replaceIfExists(word, sub.first, sub.second, startR1))
@@ -372,7 +491,9 @@ void tcc::PorterStemming::step3(std::string& word, size_t startR1,
 
 /*
 Step 4:
+
 If found and in R2, perform the action indicated.
+
 al ance ence er ic able ible ant ement ment ent ism ate
 iti ous ive ize
 delete
@@ -384,21 +505,21 @@ void tcc::PorterStemming::step4(std::string& word, size_t startR2)
 {
 	static const std::vector<std::pair<std::string, std::string>> subs
 		= { { "al", "" },
-	{ "ance", "" },
-	{ "ence", "" },
-	{ "er", "" },
-	{ "ic", "" },
-	{ "able", "" },
-	{ "ible", "" },
-	{ "ant", "" },
-	{ "ement", "" },
-	{ "ment", "" },
-	{ "ism", "" },
-	{ "ate", "" },
-	{ "iti", "" },
-	{ "ous", "" },
-	{ "ive", "" },
-	{ "ize", "" } };
+		{ "ance", "" },
+		{ "ence", "" },
+		{ "er", "" },
+		{ "ic", "" },
+		{ "able", "" },
+		{ "ible", "" },
+		{ "ant", "" },
+		{ "ement", "" },
+		{ "ment", "" },
+		{ "ism", "" },
+		{ "ate", "" },
+		{ "iti", "" },
+		{ "ous", "" },
+		{ "ive", "" },
+		{ "ize", "" } };
 
 	for (auto& sub : subs)
 		if (replaceIfExists(word, sub.first, sub.second, startR2))
@@ -416,6 +537,7 @@ void tcc::PorterStemming::step4(std::string& word, size_t startR2)
 
 /*
 Step 5:
+
 e     delete if in R2, or in R1 and not preceded by a short syllable
 l     delete if in R2 and preceded by l
 */
@@ -441,6 +563,7 @@ void tcc::PorterStemming::step5(std::string& word, size_t startR1,
 /*
 Determines whether a word ends in a short syllable.
 Define a short syllable in a word as either
+
 (a) a vowel followed by a non-vowel other than w, x or Y and preceded by a
 non-vowel
 (b) a vowel at the beginning of the word followed by a non-vowel.
@@ -464,16 +587,16 @@ bool tcc::PorterStemming::special(std::string& word)
 {
 	static const std::unordered_map<std::string, std::string> exceptions
 		= { { "skis", "ski" },
-	{ "skies", "sky" },
-	{ "dying", "die" },
-	{ "lying", "lie" },
-	{ "tying", "tie" },
-	{ "idly", "idl" },
-	{ "gently", "gentl" },
-	{ "ugly", "ugli" },
-	{ "early", "earli" },
-	{ "only", "onli" },
-	{ "singly", "singl" } };
+		{ "skies", "sky" },
+		{ "dying", "die" },
+		{ "lying", "lie" },
+		{ "tying", "tie" },
+		{ "idly", "idl" },
+		{ "gently", "gentl" },
+		{ "ugly", "ugli" },
+		{ "early", "earli" },
+		{ "only", "onli" },
+		{ "singly", "singl" } };
 
 	// special cases
 	auto ex = exceptions.find(word);
