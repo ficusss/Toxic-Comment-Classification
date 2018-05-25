@@ -1,6 +1,7 @@
 [{"comment_text":"Hi Explicit, can you block O Fenian for edit-warring on the Giant's Causeway wp. He has made several edits which can only be described as terrorism.afasf ","rating":{"identity_hate":0.0,"insult":0.0,"obscene":0.0,"severe_toxic":0.0,"threat":0.0,"toxic":0.0}},
-{"comment_text":"new text ","rating":{"identity_hate":0.0,"insult":0.0,"obscene":0.0,"severe_toxic":0.0,"threat":0.0,"toxic":0.0}},
-{"comment_text":" and new text, yet!","rating":{"identity_hate":0.0,"insult":0.0,"obscene":0.0,"severe_toxic":0.0,"threat":0.0,"toxic":0.0}},
-{"comment_text":" and new text, yet! ----- and new text, yet!","rating":{"identity_hate":0.0,"insult":0.0,"obscene":0.0,"severe_toxic":0.0,"threat":0.0,"toxic":0.0}},
-{"comment_text":"COCKSUCKER BEFORE YOU PISS AROUND ON MY WORK","rating":{"identity_hate":0.0,"insult":0.0,"obscene":0.0,"severe_toxic":0.0,"threat":0.0,"toxic":0.0}},
+{"comment_text":"new text ","rating":{"identity_hate":0.0008720610816457774,"insult":0.0003116888989312142,"obscene":0.001036217909848972,"severe_toxic":0.0007675232399392311,"threat":0.0006891080870960272,"toxic":0.0006089660796227521}},
+{"comment_text":" and new text, yet!","rating":{"identity_hate":8.5359122976222e-05,"insult":5.409361283993069e-06,"obscene":7.663653512514346e-05,"severe_toxic":5.1060393732428404e-05,"threat":3.605673670981123e-05,"toxic":1.5807591592319403e-05}},
+{"comment_text":" and new text, yet! ----- and new text, yet!","rating":{"identity_hate":7.287423865294625e-09,"insult":2.9261506071166795e-11,"obscene":5.874058782013139e-09,"severe_toxic":2.607430067326354e-09,"threat":1.3001820194214443e-09,"toxic":2.4988785207490216e-10}},
+{"comment_text":"COCKSUCKER BEFORE YOU PISS AROUND ON MY WORK","rating":{"identity_hate":0.004268369880809454,"insult":1.457139451746079e-13,"obscene":9.299800336082841e-05,"severe_toxic":2.1788309802677844e-05,"threat":6.241777721281129e-08,"toxic":2.5099987477237103e-11}},
+{"comment_text":"you fucking idiot!!!","rating":{"identity_hate":0.9380302791806197,"insult":8.255036359447474e-06,"obscene":0.6310388929884987,"severe_toxic":0.32927968961719933,"threat":0.006460119677741215,"toxic":0.0001510059564671503}},
 ]
