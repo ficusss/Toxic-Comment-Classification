@@ -16,14 +16,6 @@ namespace tcc
 	///Перечисление "специальной" метаинформации о слове 
 	enum word_info{ LOWERCASE, UPPERCASE, QUOTES};
 
-	/// Cтруктура, описывающая слово
-	typedef struct word {
-		///слово
-		std::string str;
-		///мета-информация
-		word_info info;
-	}word_t;
-
 	/**
 	@brief Интерфейс для классов, предназначенных для нахождения основы слова (стемминга)
 	*/
