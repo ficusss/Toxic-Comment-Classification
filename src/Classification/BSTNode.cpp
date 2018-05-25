@@ -54,7 +54,7 @@ namespace tcc {
 		return pivot;
 	}
 
-	BSTNode* BSTNode::_find(int key) {
+	BSTNode* BSTNode::_find(size_t key) {
 		auto curr_node = this;
 
 		while (curr_node) {

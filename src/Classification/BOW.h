@@ -16,16 +16,17 @@ namespace tcc {
 		/**
 		@brief Конструктор экземпляра класса
 		*/
-		BOW() { _root = new tcc::BSTNode(Word(0, 0)); }
+		BOW() { _root = new tcc::BSTNode(std::move(Word(0, 0))); }
 		/**
 		@brief Добавление слова в словарь
 		@param s - строка, содержащая слово
+		@param tags - структура с тегами комментария, к которому относится данное слово
 		*/
 		void add_word(std::string& s, json tags);
 		/**
 		@brief Поиск информации о слове
 		@param s - искомое слово
-		@returns количество раз, когда слово встретилось в корпусе текстов
+		@returns структура, содержащая информацию о встречаемости слова в данном корпусе
 		*/
 		Word find_word(std::string& s);
 	private:

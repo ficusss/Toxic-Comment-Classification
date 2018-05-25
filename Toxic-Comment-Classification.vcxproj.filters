@@ -21,25 +21,13 @@
     <ClInclude Include="src\Cores\Core.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
-    <ClInclude Include="src\DataPreprocessing\DataPreprocessing.h">
-      <Filter>Заголовочные файлы</Filter>
-    </ClInclude>
     <ClInclude Include="src\DataProviders\DataProvider.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
     <ClInclude Include="src\includes\json.hpp">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
-    <ClInclude Include="src\Controllers\Controller.h">
-      <Filter>Заголовочные файлы</Filter>
-    </ClInclude>
     <ClInclude Include="src\Classification\BSTNode.h">
-      <Filter>Заголовочные файлы</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Classification\Vocab.h">
-      <Filter>Заголовочные файлы</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Classification\BOW.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
     <ClInclude Include="src\Stemmer\Stemmer.h">
@@ -56,9 +44,6 @@
     <ClCompile Include="src\DataProviders\KaggleDataProvider.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>Файлы исходного кода</Filter>
-    </ClCompile>
     <ClCompile Include="src\Classification\BSTNode.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
@@ -68,13 +53,16 @@
     <ClCompile Include="src\Stemmer\Stemming.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
-    <ClCompile Include="src\BOW.cpp">
-      <Filter>Файлы исходного кода</Filter>
-    </ClCompile>
-    <ClCompile Include="src\NaiveBayesClassifyer.cpp">
-      <Filter>Файлы исходного кода</Filter>
-    </ClCompile>
     <ClCompile Include="src\DataProviders\PlainTextDataProvider.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Classification\NaiveBayesClassifyer.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Classification\BOW.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
   </ItemGroup>

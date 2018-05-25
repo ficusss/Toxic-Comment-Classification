@@ -19,27 +19,23 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Classification\BOW.h" />
     <ClInclude Include="src\Classification\BSTNode.h" />
     <ClInclude Include="src\Classification\Classifyer.h" />
-    <ClInclude Include="src\Controllers\Controller.h" />
-    <ClInclude Include="src\Classification\Vocab.h" />
     <ClInclude Include="src\Cores\Core.h" />
     <ClInclude Include="src\DataConsumers\StreamDataWriter.h" />
-    <ClInclude Include="src\DataPreprocessing\DataPreprocessing.h" />
     <ClInclude Include="src\DataProviders\DataProvider.h" />
     <ClInclude Include="src\includes\json.hpp" />
     <ClInclude Include="src\Stemmer\Stemmer.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="src\BOW.cpp" />
+    <ClCompile Include="src\Classification\BOW.cpp" />
     <ClCompile Include="src\Classification\BSTNode.cpp" />
+    <ClCompile Include="src\Classification\NaiveBayesClassifyer.cpp" />
     <ClCompile Include="src\cmdParser.cpp" />
     <ClCompile Include="src\Cores\RandomCore.cpp" />
     <ClCompile Include="src\DataProviders\KaggleDataProvider.cpp" />
     <ClCompile Include="src\DataProviders\PlainTextDataProvider.cpp" />
-    <ClCompile Include="src\NaiveBayesClassifyer.cpp" />
+    <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Stemmer\Stemming.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

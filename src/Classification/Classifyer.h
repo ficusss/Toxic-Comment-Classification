@@ -1,7 +1,9 @@
 ﻿#pragma once
 #include <memory>
 #include <cmath>
-#include "Vocab.h"
+#include <vector>
+#include <string>
+#include <Classification/BOW.h>
 
 
 namespace tcc {
@@ -25,7 +27,7 @@ namespace tcc {
 		virtual void train() = 0;
 		/**
 		@brief Оценка текста
-		@param text - текст, подлежащий оцениванию
+		@param text - текст, подлежащий оцениванию, в виде вектора слов
 		@returns вероятность принадлежности текста категории
 		*/
 		virtual double run(textVec& text) const = 0;
@@ -39,6 +41,7 @@ namespace tcc {
 		/**
 		@brief Конструктор экземпляра класса
 		@param v - информация о словах, встречающихся в корпусе текстов
+		@param i - индекс классификатора, задающий, какую из категорий текстов он анализирует
 		*/
 		NaiveBayesClassifyer(std::shared_ptr<BOW>& v, int i) : bow(v), _ind(i) {};
 		~NaiveBayesClassifyer() override = default;

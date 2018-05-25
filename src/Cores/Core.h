@@ -23,7 +23,7 @@ namespace tcc {
 	public:
 		/**
 		@brief Виртуальная функция классификации "недоброжелательности" текста
-		@param t текст
+		@param t текст в виде вектора слов
 		*/
 		virtual std::vector<double> run(textVec& t) const = 0;
 		/**
@@ -45,6 +45,12 @@ namespace tcc {
 		@param model вектор классификаторов, задающих используемую модель
 		*/
 		RandomCore(std::vector<std::shared_ptr<Classifyer>> model) { _model = model; }
+
+		/**
+		@brief Конструктор класса
+		@param b мешок слов, на основе которого будет построен классификатор
+		@param tags_count количество категорий в тексте
+		*/
 		RandomCore(std::shared_ptr<BOW> b, int tags_count)
 		{
 			for (auto i = 0; i < tags_count; i++)

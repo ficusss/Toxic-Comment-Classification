@@ -34,7 +34,7 @@ namespace tcc {
     private:
         std::string _input_file;
         //Разделитель текстов
-        static const char* s_quot;
+        static const char* s_delim;
     public:
         /**
         @brief Конструктор класса
