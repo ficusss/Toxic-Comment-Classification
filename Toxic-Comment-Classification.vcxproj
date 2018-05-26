@@ -19,8 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Classification\BOW.h" />
     <ClInclude Include="src\Classification\BSTNode.h" />
+    <ClInclude Include="src\Classification\BSTNodeSerialization.h" />
     <ClInclude Include="src\Classification\Classifyer.h" />
+    <ClInclude Include="src\Controllers\Controller.h" />
     <ClInclude Include="src\Cores\Core.h" />
     <ClInclude Include="src\DataConsumers\StreamDataWriter.h" />
     <ClInclude Include="src\DataProviders\DataProvider.h" />
@@ -30,6 +33,7 @@
   <ItemGroup>
     <ClCompile Include="src\Classification\BOW.cpp" />
     <ClCompile Include="src\Classification\BSTNode.cpp" />
+    <ClCompile Include="src\Classification\BSTNodeSerialization.cpp" />
     <ClCompile Include="src\Classification\NaiveBayesClassifyer.cpp" />
     <ClCompile Include="src\cmdParser.cpp" />
     <ClCompile Include="src\Cores\RandomCore.cpp" />
