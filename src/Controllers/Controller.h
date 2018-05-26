@@ -62,8 +62,13 @@ namespace tcc {
 		{ 
 			_train_data = load_data(_train_data_provider);
 			_train_stem_data = _stem.stem(_train_data);
+
+			//_train_stem_data.save_to_file("model.txt");
+			//_train_stem_data = tcc::BOW("model.txt");
+
 			_train_stem_data_ptr = std::make_shared<tcc::BOW> (_train_stem_data);
 			_core = tcc::RandomCore(_train_stem_data_ptr, 6);
+
 			_init = 1;
 		};
 		/**

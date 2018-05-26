@@ -31,7 +31,7 @@ int main()
 
 	auto end_time = time(&timer);
 
-	std::ofstream out("demonstration_data/time_work.txt");
+	std::ofstream out("demonstration_data/time_working.txt");
 	out << "init_time: " << difftime(initend_time, start_time) << std::endl;
 	out << "run_time: " << difftime(end_time, initend_time) << std::endl;
 

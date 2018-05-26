@@ -1,5 +1,6 @@
 #include<functional>
 #include "Classification/BOW.h"
+#include "BSTNodeSerialization.h"
 
 namespace tcc {
 	void BOW::add_word(std::string& w, json tags)
@@ -29,5 +30,17 @@ namespace tcc {
 			return res->w;
 
 		return  Word(0, 0);
+	}
+
+	void BOW::save_to_file(const char* filename)
+	{
+		std::ofstream out(filename);
+		tcc::serialize(_root, out);
+	}
+
+	void BOW::load_from_file(const char* filename)
+	{
+		std::ifstream in(filename);
+		_root = tcc::deserialize(in);
 	}
 }

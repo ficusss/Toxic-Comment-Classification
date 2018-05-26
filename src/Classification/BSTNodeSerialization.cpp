@@ -1,4 +1,4 @@
-#include "BSTNodeSerialization.h".h"
+#include "BSTNodeSerialization.h"
 #include <vector>
 #include <limits>
 
@@ -36,12 +36,23 @@ BSTNode* deserialize(std::ifstream &in)
 {
     Word w;
     std::vector<BSTNode*> nodes;
+<<<<<<< HEAD
     unsigned index = 0;
     while(!in.read(&w, sizeof(w)))
     {
         nodes.push_back(new BSTNode(w));
     }
     _deserialize(nodes, index, std::numeric_limits<std::size_t>::min(), std::numeric_limits<std::size_t>::max())->_calc_height();
+=======
+    while(in.read((char*)&w, sizeof(w)))
+    {
+        nodes.push_back(new BSTNode(w));
+    }
+	auto min = std::numeric_limits<std::size_t>::min();
+	auto max = std::numeric_limits<std::size_t>::max();
+    _deserialize(nodes, 0, std::numeric_limits<std::size_t>::min(), std::numeric_limits<std::size_t>::max());
+	nodes.front()->_calc_height();
+>>>>>>> master
     return nodes.front();
 }
 

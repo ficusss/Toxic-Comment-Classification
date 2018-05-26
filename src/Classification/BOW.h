@@ -18,6 +18,10 @@ namespace tcc {
 		*/
 		BOW() { _root = new tcc::BSTNode(std::move(Word(0, 0))); }
 		/**
+		@brief Конструктор экземпляра класса из файла
+		*/
+		BOW(const char* filename) { load_from_file(filename); }
+		/**
 		@brief Добавление слова в словарь
 		@param s - строка, содержащая слово
 		@param tags - структура с тегами комментария, к которому относится данное слово
@@ -29,6 +33,16 @@ namespace tcc {
 		@returns структура, содержащая информацию о встречаемости слова в данном корпусе
 		*/
 		Word find_word(std::string& s);
+		/**
+		@brief Сохранение словаря в файл
+		@param filename - имя файла
+		*/
+		void save_to_file(const char* filename);
+		/**
+		@brief Загрузка словаря из файла
+		@param filename - имя файла
+		*/
+		void load_from_file(const char* filename);
 	private:
 		BSTNode* _root;
 	};
