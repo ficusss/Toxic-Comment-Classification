@@ -5,12 +5,12 @@
 namespace tcc
 {
 
-void serialize(BSTNode* node, std::ofstream &out)
+void serialize(BSTNode* node, FILE *out)
 {
     if (node)
     {
-        out.write((char*)&node->w, sizeof(Word));
-		out.write((char*)&node->height, sizeof(int));
+		fwrite((char*)&node->w, sizeof(Word), 1, out);
+		fwrite((char*)&node->height, sizeof(int), 1, out);
         serialize(node->left, out);
         serialize(node->right, out);
     }
@@ -33,15 +33,16 @@ BSTNode* _deserialize(std::vector<BSTNode*> &nodes, unsigned &cur_ind, size_t mi
     return nullptr;
 }
 
-BSTNode* deserialize(std::ifstream &in)
+BSTNode* deserialize(FILE *in)
 {
     Word w;
     std::vector<BSTNode*> nodes;
     unsigned index = 0;
-    while(in.read((char*)&w, sizeof(w)))
+    while(!feof(in))
     {
+		fread((char*)&w, sizeof(Word), 1, in);
         nodes.push_back(new BSTNode(w));
-		in.read((char*)&nodes.back()->height, sizeof(int));
+		fread((char*)&nodes.back()->height, sizeof(int), 1, in);
     }
 	_deserialize(nodes, index, std::numeric_limits<std::size_t>::min(), std::numeric_limits<std::size_t>::max());
     return nodes.front();

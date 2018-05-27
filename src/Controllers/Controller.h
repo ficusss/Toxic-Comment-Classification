@@ -55,7 +55,7 @@ namespace tcc {
 			std::shared_ptr<StreamDataWriter> consumer)
 			: _data_provider(data_provider), _consumer(consumer)
 		{
-			_train_stem_data = tcc::BOW(filename);
+			//_train_stem_data = tcc::BOW(filename);
 			_init = 0;
 			_stem = tcc::PorterStemming();
 		};
@@ -64,6 +64,14 @@ namespace tcc {
 		*/
 		void init() 
 		{ 
+			std::string input_train_file_name = "demonstration_data/train.csv";
+			auto train_provider = std::make_shared<tcc::KaggleDataProvider>(tcc::KaggleDataProvider(input_train_file_name));
+			auto _train_data = load_data(train_provider);
+			_train_stem_data = _stem.stem(_train_data);
+
+			_train_stem_data.save_to_file("demonstration_data/model.txt");
+			_train_stem_data = tcc::BOW("demonstration_data/model.txt");
+
 			_train_stem_data_ptr = std::make_shared<tcc::BOW> (_train_stem_data);
 			_core = tcc::RandomCore(_train_stem_data_ptr, 6);
 
@@ -97,15 +105,6 @@ namespace tcc {
 				text["rating"]["insult"] = ratings[4];
 				text["rating"]["identity_hate"] = ratings[5];
 
-				/*
-				auto classes = { "toxic", "severe_toxic", "obscene", "threat", "insult", "identity_hate" };
-				std::vector<std::pair<std::string, double>> classes_list;
-				classes_list.resize(classes.size());
-				std::transform(classes.begin(), classes.end(), ratings.begin(), classes_list.begin(),
-					std::make_pair<std::string, double>);
-				for (auto el : classes_list)
-					text["rating"][el.first] = el.second;
-				*/
 				_res.push_back(text);
 			}
 
