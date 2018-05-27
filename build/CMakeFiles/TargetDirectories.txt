@@ -1,3 +1,0 @@
-/home/rkt/Documents/Pr/Toxic-Comment-Classification/build/CMakeFiles/rebuild_cache.dir
-/home/rkt/Documents/Pr/Toxic-Comment-Classification/build/CMakeFiles/toxic_comments_classification.dir
-/home/rkt/Documents/Pr/Toxic-Comment-Classification/build/CMakeFiles/edit_cache.dir

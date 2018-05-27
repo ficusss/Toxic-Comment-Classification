@@ -665,7 +665,7 @@ bool tcc::PorterStemming::endsInDouble(const std::string& word)
 bool tcc::PorterStemming::replaceIfExists(std::string& word, const std::string& suffix, const std::string& replacement, size_t start)
 {
 	int idx = (int)word.size() - (int)suffix.size();
-	if (idx < start || idx < 0)
+	if (idx < (int)start || idx < 0)
 		return false;
 
 	if (std::equal(word.begin() + idx, word.end(), suffix.begin()))

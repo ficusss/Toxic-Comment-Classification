@@ -4,7 +4,7 @@
 #include<array>
 #include<algorithm>
 #include<stack>
-#include "includes/json.hpp"
+#include "../includes/json.hpp"
 
 
 using json = nlohmann::json;

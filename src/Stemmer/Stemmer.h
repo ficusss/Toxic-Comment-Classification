@@ -2,8 +2,8 @@
 
 #include <iostream>
 #include <string>
-#include "includes/json.hpp"
-#include "Classification/BOW.h"
+#include "../includes/json.hpp"
+#include "../Classification/BOW.h"
 
 
 using json = nlohmann::json;

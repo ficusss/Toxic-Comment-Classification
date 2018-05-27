@@ -1,7 +1,7 @@
-﻿#include "includes/json.hpp"
+﻿#include "../includes/json.hpp"
 
-#include "Classification/Classifyer.h"
-#include "Classification/BOW.h"
+#include "../Classification/Classifyer.h"
+#include "../Classification/BOW.h"
 
 #define LABELS_COUNT 5
 

@@ -1,4 +1,4 @@
-#include "Classification\Classifyer.h"
+#include "../Classification/Classifyer.h"
 
 namespace tcc {
 	double NaiveBayesClassifyer::_logLike(std::string& word) const {

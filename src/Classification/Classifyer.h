@@ -3,7 +3,7 @@
 #include <cmath>
 #include <vector>
 #include <string>
-#include <Classification/BOW.h>
+#include "../Classification/BOW.h"
 
 
 namespace tcc {

@@ -1,4 +1,4 @@
-#include "Cores/Core.h"
+#include "Core.h"
 
 namespace tcc {
 	std::vector<double> RandomCore::run(textVec& t) const {

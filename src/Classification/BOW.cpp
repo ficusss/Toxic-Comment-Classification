@@ -1,5 +1,5 @@
 #include<functional>
-#include "Classification/BOW.h"
+#include "BOW.h"
 #include "BSTNodeSerialization.h"
 
 namespace tcc {

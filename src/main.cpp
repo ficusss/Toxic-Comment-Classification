@@ -4,37 +4,17 @@
 #include <time.h>
 
 
-int main()
+int main(int argc, char* argv[])
 {
-	// testing
-	//std::string input_train_file_name = "test_data/train.csv";
-	// demonstration
-	//std::string input_train_file_name = "demonstration_data/train.csv";
+	std::string input_test_filename = argv[1];
+	std::string output_filename = argv[2];
+	char* model_filename = argv[3];
 
-	std::string input_test_file_name = "demonstration_data/test.txt";
-	std::string output_file_name = "demonstration_data/output.txt";
+	auto test_provider = std::make_shared<tcc::PlainTextDataProvider>(tcc::PlainTextDataProvider(input_test_filename));
+	auto consumer = std::make_shared<tcc::StreamDataWriter> (tcc::StreamDataWriter(output_filename));
 
-	//auto train_provider = std::make_shared<tcc::KaggleDataProvider> (tcc::KaggleDataProvider(input_train_file_name));
-	auto test_provider = std::make_shared<tcc::PlainTextDataProvider>(tcc::PlainTextDataProvider(input_test_file_name));
-	auto consumer = std::make_shared<tcc::StreamDataWriter> (tcc::StreamDataWriter(output_file_name));
-
-	auto controller = tcc::Controller("demonstration_data/model.txt", test_provider, consumer);
-
-	time_t timer;
-	auto start_time = time(&timer);
-
-	controller.init();
-
-	auto initend_time = time(&timer);
-
+	auto controller = tcc::Controller(model_filename, test_provider, consumer);
 	controller.run();
-
-	auto end_time = time(&timer);
-
-	std::ofstream out("demonstration_data/time_working.txt");
-	out << "init_time: " << difftime(initend_time, start_time) << std::endl;
-	out << "run_time: " << difftime(end_time, initend_time) << std::endl;
-
 
 	return 0;
 }
