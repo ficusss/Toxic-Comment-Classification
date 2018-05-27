@@ -66,7 +66,7 @@ namespace tcc {
 			_train_stem_data1.save_to_file("model.txt");
 			_train_stem_data = tcc::BOW("model.txt");
 
-			_train_stem_data_ptr = std::make_shared<tcc::BOW> (_train_stem_data1);
+			_train_stem_data_ptr = std::make_shared<tcc::BOW> (_train_stem_data);
 			_core = tcc::RandomCore(_train_stem_data_ptr, 6);
 
 			_init = 1;

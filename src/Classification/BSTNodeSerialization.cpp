@@ -33,14 +33,6 @@ BSTNode* _deserialize(std::vector<BSTNode*> &nodes, unsigned &cur_ind, size_t mi
     return nullptr;
 }
 
-void _deserialize_naive(std::vector<BSTNode*> &nodes)
-{
-	for (auto it = nodes.begin() + 1; it != nodes.end(); it++)
-	{
-		nodes[0] = nodes[0]->_insert(*it);
-	}
-}
-
 BSTNode* deserialize(std::ifstream &in)
 {
     Word w;
@@ -48,14 +40,10 @@ BSTNode* deserialize(std::ifstream &in)
     unsigned index = 0;
     while(in.read((char*)&w, sizeof(w)))
     {
-		int t;
         nodes.push_back(new BSTNode(w));
-		//in.read((char*)&nodes.back()->height, sizeof(int));
-		in.read((char*)&t, sizeof(int));
+		in.read((char*)&nodes.back()->height, sizeof(int));
     }
-	// _deserialize(nodes, index, std::numeric_limits<std::size_t>::min(), std::numeric_limits<std::size_t>::max());
-	_deserialize_naive(nodes);
-	auto test = nodes.front()->check(std::numeric_limits<std::size_t>::min(), std::numeric_limits<std::size_t>::max());
+	_deserialize(nodes, index, std::numeric_limits<std::size_t>::min(), std::numeric_limits<std::size_t>::max());
     return nodes.front();
 }
 
