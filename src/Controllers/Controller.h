@@ -30,7 +30,7 @@ namespace tcc {
 		std::shared_ptr<BOW> _train_stem_data_ptr;
 		tcc::PorterStemming _stem;
 		tcc::RandomCore _core;
-		tcc::BOW _train_stem_data1, _train_stem_data;
+		tcc::BOW _train_stem_data;
 		std::vector<json> _res, _train_data;
 		bool _init;
 		int _dims = 100;
@@ -46,12 +46,16 @@ namespace tcc {
 		/**
 		@brief Конструктор класса
 		@param data_provider Указатель на используемый провайдер
+		@param filename Имя файла, из которого будет считана модель
+		@param consumer Указатель на поток, в который будет вестись запись
 		*/
-		Controller(std::shared_ptr<DataProvider> train_data_provider,
+
+		Controller(char* filename,
 			std::shared_ptr<DataProvider> data_provider,
 			std::shared_ptr<StreamDataWriter> consumer)
-			: _train_data_provider(train_data_provider), _data_provider(data_provider), _consumer(consumer)
+			: _data_provider(data_provider), _consumer(consumer)
 		{
+			_train_stem_data = tcc::BOW(filename);
 			_init = 0;
 			_stem = tcc::PorterStemming();
 		};
@@ -60,12 +64,6 @@ namespace tcc {
 		*/
 		void init() 
 		{ 
-			_train_data = load_data(_train_data_provider);
-			_train_stem_data1 = _stem.stem(_train_data);
-//
-			_train_stem_data1.save_to_file("model.txt");
-			_train_stem_data = tcc::BOW("model.txt");
-
 			_train_stem_data_ptr = std::make_shared<tcc::BOW> (_train_stem_data);
 			_core = tcc::RandomCore(_train_stem_data_ptr, 6);
 

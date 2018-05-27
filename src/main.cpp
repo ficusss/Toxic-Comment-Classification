@@ -18,7 +18,7 @@ int main()
 	auto test_provider = std::make_shared<tcc::PlainTextDataProvider>(tcc::PlainTextDataProvider(input_test_file_name));
 	auto consumer = std::make_shared<tcc::StreamDataWriter> (tcc::StreamDataWriter(output_file_name));
 
-	auto controller = tcc::Controller(train_provider, test_provider, consumer);
+	auto controller = tcc::Controller("demonstration_data/model.txt", test_provider, consumer);
 
 	time_t timer;
 	auto start_time = time(&timer);

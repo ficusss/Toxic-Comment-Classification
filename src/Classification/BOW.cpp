@@ -34,15 +34,15 @@ namespace tcc {
 
 	void BOW::save_to_file(const char* filename)
 	{
-		int i = 0;
 		std::ofstream out(filename, std::ios_base::binary);
 		tcc::serialize(_root, out);
-		auto t = i;
+		out.close();
 	}
 
 	void BOW::load_from_file(const char* filename)
 	{
 		std::ifstream in(filename, std::ios_base::binary);
 		_root = tcc::deserialize(in);
+		in.close();
 	}
 }
