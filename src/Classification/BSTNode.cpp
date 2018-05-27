@@ -93,7 +93,7 @@ namespace tcc {
 		}
 
 
-		while (!path.empty()) {
+		/*while (!path.empty()) {
 			parent = path.top();
 			parent->left = _balance(parent->left);
 			parent->right = _balance(parent->right);
@@ -101,6 +101,8 @@ namespace tcc {
 		}
 
 		return _balance(parent);
+		*/
+		return parent;
 	}
 
 	void BSTNode::_release() {

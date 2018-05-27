@@ -56,7 +56,15 @@ namespace tcc {
 		BSTNode* _insert(BSTNode* w);
 		BSTNode* _balance(BSTNode* pivot);
 		BSTNode* _find(size_t key);
-
+		bool check(size_t min, size_t max)
+		{
+			bool l = true; bool r = true;
+			if (left)
+				l = w.word_hash >= left->w.word_hash && w.word_hash >= min && w.word_hash <= max && left->check(min, w.word_hash);
+			if (right)
+				l = w.word_hash < right->w.word_hash && w.word_hash >= min && w.word_hash <= max && right->check(w.word_hash, max);
+			return l && r;
+		}
 		void _release();
 		static int _height(BSTNode* n) { if (n) return n->height; return 0; }
 		static BSTNode* _rotate_left(BSTNode* pivot);

@@ -30,7 +30,7 @@ namespace tcc {
 		std::shared_ptr<BOW> _train_stem_data_ptr;
 		tcc::PorterStemming _stem;
 		tcc::RandomCore _core;
-		tcc::BOW _train_stem_data;
+		tcc::BOW _train_stem_data1, _train_stem_data;
 		std::vector<json> _res, _train_data;
 		bool _init;
 		int _dims = 100;
@@ -61,12 +61,12 @@ namespace tcc {
 		void init() 
 		{ 
 			_train_data = load_data(_train_data_provider);
-			_train_stem_data = _stem.stem(_train_data);
+			_train_stem_data1 = _stem.stem(_train_data);
+//
+			_train_stem_data1.save_to_file("model.txt");
+			_train_stem_data = tcc::BOW("model.txt");
 
-			//_train_stem_data.save_to_file("model.txt");
-			//_train_stem_data = tcc::BOW("model.txt");
-
-			_train_stem_data_ptr = std::make_shared<tcc::BOW> (_train_stem_data);
+			_train_stem_data_ptr = std::make_shared<tcc::BOW> (_train_stem_data1);
 			_core = tcc::RandomCore(_train_stem_data_ptr, 6);
 
 			_init = 1;
