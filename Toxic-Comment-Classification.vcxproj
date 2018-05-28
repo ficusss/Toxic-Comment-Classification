@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="includes\json.hpp" />
     <ClInclude Include="src\Classification\BOW.h" />
     <ClInclude Include="src\Classification\BSTNode.h" />
     <ClInclude Include="src\Classification\BSTNodeSerialization.h" />
@@ -27,7 +28,6 @@
     <ClInclude Include="src\Cores\Core.h" />
     <ClInclude Include="src\DataConsumers\StreamDataWriter.h" />
     <ClInclude Include="src\DataProviders\DataProvider.h" />
-    <ClInclude Include="src\includes\json.hpp" />
     <ClInclude Include="src\Stemmer\Stemmer.h" />
   </ItemGroup>
   <ItemGroup>

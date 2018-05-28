@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <string>
-#include "../includes/json.hpp"
+#include "../../includes/json.hpp"
 #include "../Classification/BOW.h"
 
 

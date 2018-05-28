@@ -1,4 +1,4 @@
-﻿#include "../includes/json.hpp"
+﻿#include "../../includes/json.hpp"
 
 #include "../Classification/Classifyer.h"
 #include "../Classification/BOW.h"
