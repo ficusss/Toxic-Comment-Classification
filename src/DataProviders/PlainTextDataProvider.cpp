@@ -1,4 +1,4 @@
-#include "DataProvider.h"
+﻿#include "DataProvider.h"
 #include<iostream>
 #include<fstream>
 #include<string>
@@ -11,6 +11,7 @@ std::vector<json> tcc::PlainTextDataProvider::get_data() const
     std::vector<json> result = {};
     std::string line, text;
     std::ifstream in(_input_file);
+	int i = 1;
     while(std::getline(in, line))
     {
         if(!line.compare(s_delim))
@@ -19,6 +20,7 @@ std::vector<json> tcc::PlainTextDataProvider::get_data() const
             j["comment_text"] = text;
             text.clear();
             result.push_back(j);
+			std::cout << "Считывается текст номер " << i++ << "..." << std::endl;
         }
         else if (!line.find_first_not_of("\t\v\r\n"))
         {
@@ -30,6 +32,7 @@ std::vector<json> tcc::PlainTextDataProvider::get_data() const
         json j;
         j["comment_text"] = text;
         result.push_back(j);
+		std::cout << "Считывается текст номер " << i++ << "..." << std::endl;
     }
     return result;
 }

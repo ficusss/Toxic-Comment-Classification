@@ -62,9 +62,10 @@ namespace tcc {
 			//load data
 			std::vector<json> texts = load_data(_data_provider);
 			_res = {};
-			
+			int i = 1;
 			for (auto text : texts)
 			{
+				std::cout << "Обрабатывается текст номер " << i++ << "..." << std::endl;
 				// stemming
 				auto stem_text = _stem.stem_string_to_vec(text["comment_text"]);
 

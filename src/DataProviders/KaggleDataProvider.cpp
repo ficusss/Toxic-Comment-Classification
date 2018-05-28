@@ -1,5 +1,4 @@
 ﻿#include "DataProvider.h"
-#include <iostream>
 
 const char* tcc::KaggleDataProvider::s_quot = "\",";
 const char tcc::KaggleDataProvider::s_delim = ',';
@@ -80,7 +79,6 @@ std::vector<json> tcc::KaggleDataProvider::get_data() const{
 		return result;
 
 	try {
-		int i = 0;
 		while (src.good()) {
 			std::vector<std::string> buff;
 			if (!getline(src, line))
@@ -95,8 +93,6 @@ std::vector<json> tcc::KaggleDataProvider::get_data() const{
 			buff.push_back(text);
 			auto ratings = _parse_rating(line);			
 			result.push_back(static_cast<json&&> (_sample_to_json(buff, ratings)));
-			std::cout << i << std::endl;
-			i++;
 		}
 	}
 	catch (std::bad_alloc) {
