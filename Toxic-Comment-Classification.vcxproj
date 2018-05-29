@@ -28,6 +28,7 @@
     <ClInclude Include="src\Cores\Core.h" />
     <ClInclude Include="src\DataConsumers\StreamDataWriter.h" />
     <ClInclude Include="src\DataProviders\DataProvider.h" />
+    <ClInclude Include="src\phrases.h" />
     <ClInclude Include="src\Stemmer\Stemmer.h" />
   </ItemGroup>
   <ItemGroup>

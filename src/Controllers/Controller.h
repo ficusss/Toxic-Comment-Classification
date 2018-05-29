@@ -5,6 +5,7 @@
 #include "../Cores/Core.h"
 #include "../DataConsumers/StreamDataWriter.h"
 #include "../Stemmer/Stemmer.h"
+#include "../phrases.h"
 
 /**
 namespace tcc
@@ -65,7 +66,7 @@ namespace tcc {
 			int i = 1;
 			for (auto text : texts)
 			{
-				std::cout << "Обрабатывается текст номер " << i++ << "..." << std::endl;
+				std::cout << i++ << PROCESS_TEXT << std::endl;
 				// stemming
 				auto stem_text = _stem.stem_string_to_vec(text["comment_text"]);
 

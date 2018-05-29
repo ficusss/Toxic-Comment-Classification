@@ -2,6 +2,7 @@
 #include<iostream>
 #include<fstream>
 #include<string>
+#include "../phrases.h"
 
 const char* tcc::PlainTextDataProvider::s_delim = "-----";
 
@@ -20,7 +21,7 @@ std::vector<json> tcc::PlainTextDataProvider::get_data() const
             j["comment_text"] = text;
             text.clear();
             result.push_back(j);
-			std::cout << "Считывается текст номер " << i++ << "..." << std::endl;
+			std::cout << i++ << READ_TEXT << std::endl;
         }
         else if (!line.find_first_not_of("\t\v\r\n"))
         {
@@ -32,7 +33,7 @@ std::vector<json> tcc::PlainTextDataProvider::get_data() const
         json j;
         j["comment_text"] = text;
         result.push_back(j);
-		std::cout << "Считывается текст номер " << i++ << "..." << std::endl;
+		std::cout << i++ << READ_TEXT << std::endl;
     }
     return result;
 }

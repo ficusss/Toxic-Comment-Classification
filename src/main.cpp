@@ -1,26 +1,41 @@
-﻿#include "Controllers\Controller.h"
+﻿/**
+* \file
+* \brief Run file
+*/
+
+#include "Controllers\Controller.h"
 #include <iostream>
 #include <memory>
 #include <time.h>
+#include "phrases.h"
 
-bool check_file(char* file_name) {
+/**
+@brief Check exist file
+@param[in] filename Name of file to checking
+@return (0 - Exist, 1 - No Exist)
+*/
+bool check_file(char* filename) {
 	std::ifstream file;
-	file.open(file_name);
+	file.open(filename);
 	if (!file)
 		return 1;
 	return 0;
 		
 }
 
+/**
+@brief Main function
+@param  argc Arguments count
+@param  argv Arguments value
+@return Error code
+*/
 int main(int argc, char* argv[])
 {
-	setlocale(LC_ALL, "Russian");
-
-	std::cout << "Запущено приложение: " << argv[0] << std::endl;
+	std::cout << APP_START << argv[0] << std::endl;
 
 	if (argc < 4)
 	{
-		std::cout << "Недостаточно входных арументов." << std::endl;
+		std::cout << INSUFFICIENT_ARGS << std::endl;
 	}
 	else 
 	{
@@ -30,14 +45,12 @@ int main(int argc, char* argv[])
 
 		if (check_file(argv[1]))
 		{
-			std::cout << "Не найден следующий файл : " << argv[1] << std::endl;
-			std::cout << "Выполнение завершилось неудачей :(" << std::endl;
+			std::cout << NOT_FOUND_FILE << argv[1] << std::endl;
 			return 0;
 		}
 		if (check_file(model_filename))
 		{
-			std::cout << "Не найден следующий файл : " << model_filename << std::endl;
-			std::cout << "Выполнение завершилось неудачей :(" << std::endl;
+			std::cout << NOT_FOUND_FILE << model_filename << std::endl;
 			return 0;
 		}
 		
@@ -48,9 +61,9 @@ int main(int argc, char* argv[])
 		auto controller = tcc::Controller(model_filename, test_provider, consumer);
 		controller.run();
 
-		std::cout << "\nПриложение успешно завершило работу." << std::endl;
-		std::cout << "Результат смотрите в " << argv[2] << ". (записан в json формате)." << std::endl;
+		std::cout << SUCCESSFUL_CONPLETION << std::endl;
+		std::cout << CHECK_RESULT << argv[2] << std::endl;
 	}
-
+	
 	return 0;
 }
