@@ -207,7 +207,25 @@ void tcc::PorterStemming::ignore(std::string & word)
 		{ "was", "" },
 		{ "wasnt", "" },
 		{ "that", "" },
-		{ "on", "" } };
+		{ "on", "" },
+		{ "he", "" },
+		{ "she", "" },
+		{ "you", "" },
+		{ "they", "" },
+		{ "i", "" },
+		{ "for", "" },
+		{ "on", "" },
+		{ "in", "" },
+		{ "while", "" },
+		{ "their", "" },
+		{ "around", "" },
+		{ "apart", "" },
+		{ "your", "" },
+		{ "mine", "" },
+		{ "my", "" },
+		{ "before", "" },
+		{ "after", "" } 
+	};
 
 	for (auto& sub : subs)
 		if (replaceIfExists(word, sub.first, sub.second, 0))
