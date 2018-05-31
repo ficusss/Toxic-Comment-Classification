@@ -29,7 +29,7 @@ namespace tcc {
 		@param file_name Имя файла для записи. При отсутсвии запись ведется в консоль
 		*/
 		StreamDataWriter(std::string file_name) {
-			_output = new std::ofstream(file_name);
+			_output = new std::ofstream(file_name.append(".json"));
 
 			if (!_output->is_open())
 				_cur_state = OPENING_FAIL;
@@ -55,6 +55,7 @@ namespace tcc {
 		@brief Запись в поток вектора элементов произвольного типа (один элемент - одна строка)
 		@tparam T тип записываемых элементов
 		@param vec_el ссылка на запсываемый вектор
+		@return текущее состояние потока
 		*/
 		template<typename T>
 		State operator<<(std::vector<T>& vec_el) {
@@ -84,8 +85,9 @@ namespace tcc {
 
 		/**
 		@brief Запись в поток элемента произвольного типа
-		@tparam T тип записываемого эелемента
+		@tparam T тип записываемого элемента
 		@param el ссылка на запсиываемый элемент
+		@return текущее состояние потока
 		*/
 		template<typename T>
 		State operator<<(T& el) {
@@ -111,6 +113,7 @@ namespace tcc {
 
 		/**
 		@brief Закрытие потока
+		@return текущее состояние потока
 		*/
 		State close() {
 			if (_output) {
