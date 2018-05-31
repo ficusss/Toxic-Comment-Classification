@@ -113,7 +113,7 @@
 
 Продукт сам по себе не требует особой установки. Возможно два варианта:
 * Собрать проект из исходных файлов самостоятельно.
-* Воспользоваться [уже собранными](https://yadi.sk/d/4trVOmn43WbzzN) бинарными файлами. Если ссылка не работает, попробуйте [эту](https://www.dropbox.com/sh/cvz4hyfxems1kc2/AAB4r79sYyaLJxPlJs7z6OeXa?dl=0).
+* Воспользоваться [уже собранными](https://yadi.sk/d/4trVOmn43WbzzN) бинарными файлами.
 
 
 ## Запуск продукта
@@ -123,9 +123,21 @@
 * *"путь до выходного файла"*;
 * *"путь до натренированной модели классификатора"*;
 
-Для того, чтобы запустить приложение на демонстрационных данных, необходимо перейти в командной строке в основную папку проекта и ввести следующую команду:
+Для того, чтобы запустить приложение на демонстрационных данных, необходимо:
+- собрать проект/[скачать собранные бинарные файлы](https://yadi.sk/d/4trVOmn43WbzzN);
+- перейти в командной строке в основную папку проекта;
+- ввести одну из следующих команд:
 ```
-   x64\Release\Toxic-Comment-Classification.exe demonstration_data\test.txt demonstration_data\output.txt models\model.txt
+   x64\Release\Toxic-Comment-Classification.exe demonstration_data\test.txt demonstration_data\output models\model.txt
+```
+```
+   x86\Release\Toxic-Comment-Classification.exe demonstration_data\test.txt demonstration_data\output models\model.txt
+```
+```
+   x64\Debug\Toxic-Comment-Classification.exe demonstration_data\test.txt demonstration_data\output models\model.txt
+```
+```
+   x86\Debug\Toxic-Comment-Classification.exe demonstration_data\test.txt demonstration_data\output models\model.txt
 ```
 
 
