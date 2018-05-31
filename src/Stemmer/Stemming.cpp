@@ -76,58 +76,6 @@ std::vector<std::string> tcc::PorterStemming::stem_string_to_vec(std::string tex
 	return res;
 }
 
-std::vector<json> tcc::PorterStemming::stem_for_print(std::vector<json> text) {
-
-	std::vector<std::vector<std::string>> all_text(text.size(), std::vector<std::string>());
-	std::string buf_comment;
-	std::string buf_word;
-	std::string tag = "comment_text";
-	std::string neg = "not";
-	bool for_not = false;
-
-	size_t i = 0;
-	for (json el : text) {
-
-		buf_comment = el[tag];
-
-		std::istringstream iss(buf_comment, std::istringstream::in);
-		while (iss >> buf_word) {
-			if (buf_word == "not") {
-				for_not = true;
-				continue;
-			}
-
-			if (for_not)
-				buf_word = neg + buf_word;
-			all_text[i].push_back(buf_word);
-			for_not = false;
-		}
-
-		i++;
-
-	}
-	for (auto it = all_text.begin(); it != all_text.end(); ++it) {
-		for (auto it2 = (*it).begin(); it2 != (*it).end(); ++it2) {
-			trim(*it2);
-			stem_word((*it2));
-		}
-	}
-
-	std::vector<json> res = {};
-	json buf;
-
-	int id = 0;
-	for (auto comment : all_text)
-	{
-		buf["id"] = id;
-		buf["comment_text"] = comment;
-		res.push_back(buf);
-		id++;
-	}
-
-	return res;
-}
-
 void tcc::PorterStemming::stem_word(std::string& word) {
 
 	ignore(word);

@@ -1,4 +1,4 @@
-# Toxic Comment Classification (TCC)
+﻿# Toxic Comment Classification (TCC)
 
 ![banner image](images/project_logo.png)
 
@@ -125,6 +125,12 @@
 * *"путь до входного файла"*;
 * *"путь до выходного файла"*;
 * *"путь до натренерованной модели классификатора"*;
+
+Для того, чтобы запустить приложение на демонстрационных данных, необходимо перейти в командной строке в основную папку проекта и ввести следующую команду:
+```
+   x64\Release\Toxic-Comment-Classification.exe demonstration_data\test.txt demonstration_data\output.txt models\model.txt
+```
+
 
 ## Описание API библиотеки
 

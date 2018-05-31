@@ -1,4 +1,4 @@
-#ifndef BSTNODESERIALIZATION_H
+п»ї#ifndef BSTNODESERIALIZATION_H
 #define BSTNODESERIALIZATION_H
 #include "BSTNode.h"
 #include <fstream>
@@ -7,16 +7,16 @@
 namespace tcc
 {
 	/**
-	@brief Запись дерева в файл
-	@param node - указатель на корневой узел дерева
-	@param out - поток для записи
+	@brief Р—Р°РїРёСЃСЊ РґРµСЂРµРІР° РІ С„Р°Р№Р»
+	@param node - СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РєРѕСЂРЅРµРІРѕР№ СѓР·РµР» РґРµСЂРµРІР°
+	@param out - РїРѕС‚РѕРє РґР»СЏ Р·Р°РїРёСЃРё
 	*/
 	void serialize(BSTNode* node, FILE *out);
 
 	/**
-	@brief Запись дерева в файл
-	@param in - поток для чтения
-	@return указатель на корневой узел дерева
+	@brief Р—Р°РїРёСЃСЊ РґРµСЂРµРІР° РІ С„Р°Р№Р»
+	@param in - РїРѕС‚РѕРє РґР»СЏ С‡С‚РµРЅРёСЏ
+	@return СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РєРѕСЂРЅРµРІРѕР№ СѓР·РµР» РґРµСЂРµРІР°
 	*/
 	BSTNode* deserialize(FILE *in);
 

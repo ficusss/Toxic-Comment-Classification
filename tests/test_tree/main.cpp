@@ -1,8 +1,4 @@
 #include <QtCore/QCoreApplication>
+#include "test_tree.h"
 
-int main(int argc, char *argv[])
-{
-	QCoreApplication a(argc, argv);
-
-	return a.exec();
-}
+QTEST_GUILESS_MAIN(TestTree)
